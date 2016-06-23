@@ -1,0 +1,1 @@
+<CFLOCATION URL="https://#cgi.server_name#/client/main.cfm">
