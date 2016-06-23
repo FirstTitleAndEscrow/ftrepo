@@ -1,0 +1,36 @@
+# Welcome All Search Engine Friendly Robots
+#   
+
+# robots.txt for http://www.firsttitleservices.com
+
+
+User-agent:* 
+
+# Welcome All Search Engine Friendly Robots
+#   
+
+# robots.txt for http://www.firsttitleservices.com
+
+
+User-agent: *
+
+Disallow: /appraiser application.files/
+Disallow: /appraiser_application.files/
+Disallow: /closing vendor application.files/
+Disallow: /closing_vendor_application.files/
+Disallow: /images/
+Disallow: /jvi/
+Disallow: /march21/
+Disallow: /morvision/
+Disallow: /style/
+Disallow: /*.pdf$
+Disallow: /*.doc$
+Disallow: /*.jpg$
+Disallow: /*.swf$
+Disallow: /*.gif$
+Disallow: /*.cfm$
+Allow: /wp/
+Allow: /*.php$
+
+sitemap: http://www.firsttitleservices.com/sitemap.xml 
+

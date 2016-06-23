@@ -1,0 +1,42 @@
+<DataQuick>
+	<Login>
+		<Account>5htest22</Account>
+		<Password>TITLE</Password>
+	</Login>
+	<SearchParameters>
+		<Address AddressType="both"/>
+		<OwnerName>
+			<FirstName>Harry</FirstName>
+			<LastName>Travis</LastName>
+		</OwnerName>
+		<APN>
+			<StartingParcel>0</StartingParcel>
+			<EndingParcel>0</EndingParcel>
+		</APN>
+		<Geography>
+			<Cities>
+				<City>
+					<CityName>Etters</CityName>
+					<StateName>PA</StateName>
+				</City>
+			</Cities>
+			<States>
+				<StateName>PA</StateName>
+			</States>
+			<ZIPCodes>
+				<ZIPCode>17319</ZIPCode>
+			</ZIPCodes>
+			<Counties>
+				<County>
+					<CountyName>York</CountyName>
+					<StateName>PA</StateName>
+				</County>
+			</Counties>
+		</Geography>
+		<StartingRecordID/>
+	</SearchParameters>
+	<OutputParameters>
+		<NumberOfRecords>100</NumberOfRecords>
+	</OutputParameters>
+</DataQuick>
+

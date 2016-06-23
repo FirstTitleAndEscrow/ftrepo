@@ -1,0 +1,2 @@
+Select MAX(temp_loan_id +1) as loan_key
+	from Title_temp

@@ -1,0 +1,8 @@
+SELECT     *
+FROM         Doc_Title_Insurance_Title
+WHERE     (Title_ID IN
+                          (SELECT     [title_id]
+                            FROM          [doc_title_insurance_title] AS Tmp
+                            GROUP BY [title_id]
+                            HAVING      COUNT(*) > 1))
+ORDER BY Title_ID

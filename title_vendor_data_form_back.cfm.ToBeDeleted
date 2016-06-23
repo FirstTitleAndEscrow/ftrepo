@@ -1,0 +1,950 @@
+
+<CFPARAM NAME="a_direction" DEFAULT="">
+<CFPARAM NAME="Insurance_Company" DEFAULT="">
+
+
+
+		<CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_Title">
+		
+			SELECT *
+			FROM Title
+			WHERE Title_ID = #rec_ID#
+		
+		</CFQUERY>
+		
+
+			<CFSET a_proposed_insured_1 = #read_Title.bfirstname1# & " " & #read_Title.bminame1# & " " & #read_Title.blastname1# >
+			<CFSET a_proposed_insured_2 = #read_Title.bfirstname2# & " " & #read_Title.bminame2# & " " & #read_Title.blastname2# >
+			
+			
+			<CFSET Buyer_1 = #read_Title.bfirstname1# & " " & #read_Title.bminame1# & " " & #read_Title.blastname1#>
+			
+			<CFSET Buyer_2 = #read_Title.bfirstname2# & " " & #read_Title.bminame2# & " " & #read_Title.blastname2#>
+			
+			<CFSET Seller_1 = #read_Title.sfirstname1# & " " & #read_Title.sminame1# & " " & #read_Title.slastname1#>
+			
+			<CFSET Seller_2 = #read_Title.sfirstname2# & " " & #read_Title.sminame2# & " " & #read_Title.slastname2#>		
+
+<!--- ===[ 1 ]==(begin)============================================================= --->
+
+	<CFIF #Insurance_Company# GT "">		
+	
+		<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+			UPDATE Doc_Title_Insurance_Title
+			SET Insurance_Co = #Insurance_Company#
+			WHERE Title_ID = #rec_ID#		
+		</CFQUERY>	
+		
+			<!--- ===/ Set the Database to use for the Form \=== --->
+			
+			<!--- ============================================== --->
+			<!--- === [ ] American Pioneer - Florida         === --->
+			
+				<CFIF #read_Title.pstate# EQ "FL" AND #Insurance_Company# EQ 14>
+					<CFSET a_database                = "Doc_Amer_Pioneer_Ins_Fla_Title">
+					<CFSET a_InsuranceFormToUse_1    = "Title_Committment_Display_Amer_Pioneer_Ins_Fl">
+					<CFSET a_ClauseDisplayTemplate_1 = "TC_ClauseDisplay_AP_FL.cfm">
+					<CFSET a_PolicyViewTemplate_1    = "Title_Committment_View_Amer_Pioneer_Ins_FL.cfm">
+					
+						<!--- ===/ Place the default Clauses into the database \=== --->
+						<CFSET a_temp_item_counter_1 = "1">
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'The estate or interest in the land described or referred to in the committment and covered herein is [ Pick One -> Fee Simple - Leasehold - Life Estate - Term for Years ] <p>Deed in proper form from [ SELLER 1 ], [ SELLER 2 ] vesting fee simple title in [ BUYER 1 ], [ BUYER 2 ].', 'aa_default', 'A2', 2)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Instrument(s) creating the estate or interest to be insured must be approved, executed and filed for record, to wit:', 'aa_default', 'B1', 1)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Indenture of Mortgage from [ BUYER 1 ], [ BUYER 2 ] to [ PAYOFF LENDER 1 ], [ PAYOFF LENDER 2 ] securing repayment of the original principal amount of  $ [ LOAN AMOUNT ]', 'aa_default', 'B11', 1)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Payment of the full consideration to, or for the account of, the grantors or mortgagors.', 'aa_default', 'B1', 2)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Payment of all taxes, charges, assessments, levied and assessed against subject premises, which are due and payable.', 'aa_default', 'B1', 3)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Satisfactory evidence should be had that improvements and/or repairs or alterations thereto are completed; that contractor, subcontractors, labor and materialmen are all paid.', 'aa_default', 'B1', 4)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Exceptions 3 and 4 of Schedule B - Section 2 of this committment may be amended in, or deleted from the policy to be issued if a survey, satisfactory to the company, is furnished to the company.', 'aa_default', 'B1', 5)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Defects, liens, encumbrances, adverse claims or other matters, if any, created, first appearing in the public records or attaching subsequent to the effective date hereof but prior to the date the proposed Insured acquires for value of record the estate or interest or mortgage thereon covered by this committment.', 'aa_default', 'B2', 1)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Rights or claims of parties in possession not shown by the public records. ', 'aa_default', 'B2', 2)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Encroachments, overlaps, boundary line disputes, and other matters which would be disclosed by an accurate survey and inspection of the premises.', 'aa_default', 'B2', 3)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Easements or claims of easements not shown by the public records.', 'aa_default', 'B2', 4)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Taxes or special assessments which are not shown as existing liens by the public records.', 'aa_default', 'B2', 5)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Taxes and assessments for the year [ ENTER YEAR ], and subsequent years, which are not yet due and payable.', 'aa_default', 'B2', 6)
+						</CFQUERY>
+							<!--- ================================================================= --->
+							
+			<!--- =========================================== --->
+			<!--- === [ ] Stewart Title - All             === --->
+		
+			<CFELSEIF ((#read_Title.pstate# EQ "MD") 
+						OR  (#read_Title.pstate# EQ "DC")
+						OR (#read_Title.pstate# EQ "VA")
+						OR (#read_Title.pstate# EQ "MI")
+						OR (#read_Title.pstate# EQ "NJ"))
+						AND #Insurance_Company# EQ 16>
+				<CFSET a_database = "Doc_Stewart_Title_Ins_Title">
+				<CFSET a_InsuranceFormToUse_1 = "Title_Committment_Display_Stewart_Title_Ins">
+				<CFSET a_ClauseDisplayTemplate_1 = "TC_ClauseDisplay_ST_ALL.cfm">
+				<CFSET a_PolicyViewTemplate_1    = "Title_Committment_View_Stewart_Title_Ins.cfm">
+						<!--- ===/ Place the default Clauses into the database \=== --->
+						<CFSET a_temp_item_counter_1 = "1">
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'The estate or interest in the land described or referred to in this Commitment and covered herein is  [ Pick One -> Fee Simple - Leasehold - Life Estate - Term for Years ] subject to the annual ground rent of $ [ Dollars ] payable on the [ Number ] days of [ Period of time ].', 'aa_default', 'A2', 3)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Title to the Leasehold estate or interest in the land is at effective date hereof vested in:	#read_title.slastname1#, #read_title.slastname2#.', 'aa_default', 'A2', 4)
+						</CFQUERY>
+							<!--- ================================================================= --->							
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'The land referred to in this Commitment is described as follows:<p>#read_Title.plegaldesc#.', 'aa_default', 'A2', 5)
+						</CFQUERY>
+							<!--- ================================================================= --->							
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Defects, liens, encumbrances, adverse claims or other matters, if any, created first appearing in the public records or attaching subsequent to the effective date hereof but prior to the date the proposed insured acquires for value of record the estate or interest or mortgage thereon covered by this Commitment.', 'aa_default', 'B1', 1)
+						</CFQUERY>
+							<!--- ================================================================= --->							
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Taxes for the current year.', 'aa_default', 'B1', 2)
+						</CFQUERY>
+							<!--- ================================================================= --->							
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Any discrepancies, conflicts, or shortages in area or boundary lines, or any encroachments or any overlapping of improvements or other boundary or location disputes (can be eliminated or amended in the mortgagee`s policy upon proper evidence being furnished).', 'aa_default', 'B1', 3)
+						</CFQUERY>
+							<!--- ================================================================= --->							
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Restrictive covenants affecting the property described in Schedule A.', 'aa_default', 'B1', 4)
+						</CFQUERY>
+							<!--- ================================================================= --->	
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Rights or claims of parties in possession, and not of record in the public records; liens for labor, services or material or claims to same which are not of record in said records.', 'aa_default', 'B1', 5)
+						</CFQUERY>
+							<!--- ================================================================= --->	
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Any roadway or easement, similar or dissimilar, on, under, over or across said property, or any part hereof and not of record in said records.', 'aa_default', 'B1', 6)
+						</CFQUERY>
+							<!--- ================================================================= --->	
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Any titles or rights asserted by anyone, including but not limited to persons, corporations, governments, or other entities, to tidelands, or lands comprising the shores or bottoms of navigable rivers, lakes, bays, ocean or gulf, or lands beyond the line of the harbor or bulkhead lines as established or changed by the United States Government or riparian rights, if any.', 'aa_default', 'B1', 7)
+						</CFQUERY>
+							<!--- ================================================================= --->	
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Show that restrictions or restrictive covenants have not been violated.', 'aa_default', 'C1', 1)
+						</CFQUERY>
+							<!--- ================================================================= --->	
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Payment to or for the account of the grantors or mortgagors of the full consideration for the estate or interest, mortgage or lien to be issued.', 'aa_default', 'C1', 2)
+						</CFQUERY>
+							<!--- ================================================================= --->	
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Furnish proof of payment of all bills for labor and material furnished or to be furnished in connection with improvements erected or to be erected.', 'aa_default', 'C1', 3)
+						</CFQUERY>
+							<!--- ================================================================= --->		
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Pay all general and special taxes now due and payable including the following:', 'aa_default', 'C1', 4)
+						</CFQUERY>
+							<!--- ================================================================= --->	
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Record instrument(s) conveying or encumbering the estate or interest to be insured, briefly described:<p>
+							Deed from [ SELLER 1 ], [ SELLER 2 ] to [ BUYER 1 ], [ BUYER 2 ].<p>
+							Proper Security Instrument from [ BUYER 1 ], [ BUYER 2 ], securing #Read_Title.Insured# in the amount of $ #NumberFormat(read_title.loanamt_float, "999,999,999.00")#.', 'aa_default', 'C1', 5)
+						</CFQUERY>
+							<!--- ================================================================= --->		
+	
+	
+			<!--- =========================================== --->
+			<!--- === [ ] American Pioneer - All          === --->
+			
+			<CFELSEIF #Insurance_Company# EQ 15>
+				<CFSET a_database = "Doc_Amer_Pioneer_Ins_ALL_Title">
+				<CFSET a_InsuranceFormToUse_1 = "Title_Committment_Display_Amer_Pioneer_Ins_ALL">
+				<CFSET a_ClauseDisplayTemplate_1 = "">
+				<CFSET a_PolicyViewTemplate_1    = "">
+						<!--- ===/ Place the default Clauses into the database \=== --->
+						<CFSET a_temp_item_counter_1 = "1">
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'The estate or interest in the land described or referred to in the committment and covered herein is [ Pick One -> Fee Simple - Leasehold - Life Estate - Term for Years ] <p>Deed in proper form from [ SELLER 1 ], [ SELLER 2 ] vesting fee simple title in [ BUYER 1 ], [ BUYER 2 ].', 'aa_default', 'A2', 2)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Instrument(s) creating the estate or interest to be insured must be approved, executed and filed for record, to wit:', 'aa_default', 'B1', 1)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Indenture of Mortgage from [ BUYER 1 ], [ BUYER 2 ] to [ PAYOFF LENDER 1 ], [ PAYOFF LENDER 2 ] securing repayment of the original principal amount of  $ [ LOAN AMOUNT ]', 'aa_default', 'B11', 1)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Payment of the full consideration to, or for the account of, the grantors or mortgagors.', 'aa_default', 'B1', 2)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Payment of all taxes, charges, assessments, levied and assessed against subject premises, which are due and payable.', 'aa_default', 'B1', 3)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Satisfactory evidence should be had that improvements and/or repairs or alterations thereto are completed; that contractor, subcontractors, labor and materialmen are all paid.', 'aa_default', 'B1', 4)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Exceptions 3 and 4 of Schedule B - Section 2 of this committment may be amended in, or deleted from the policy to be issued if a survey, satisfactory to the company, is furnished to the company.', 'aa_default', 'B1', 5)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Defects, liens, encumbrances, adverse claims or other matters, if any, created, first appearing in the public records or attaching subsequent to the effective date hereof but prior to the date the proposed Insured acquires for value of record the estate or interest or mortgage thereon covered by this committment.', 'aa_default', 'B2', 1)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Rights or claims of parties in possession not shown by the public records. ', 'aa_default', 'B2', 2)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Encroachments, overlaps, boundary line disputes, and other matters which would be disclosed by an accurate survey and inspection of the premises.', 'aa_default', 'B2', 3)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Easements or claims of easements not shown by the public records.', 'aa_default', 'B2', 4)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Taxes or special assessments which are not shown as existing liens by the public records.', 'aa_default', 'B2', 5)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, 		Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Taxes and assessments for the year [ ENTER YEAR ], and subsequent years, which are not yet due and payable.', 'aa_default', 'B2', 6)
+						</CFQUERY>
+							<!--- ================================================================= --->
+			<!--- =========================================== --->
+			<!--- === [ ] Chicago Title - All             === --->
+			
+			<CFELSEIF #Insurance_Company# EQ 17>
+				<CFSET a_database = "Doc_Chicago_Title_Ins_Title">
+				<CFSET a_InsuranceFormToUse_1 = "Title_Committment_Display_Chicago_Title_Ins">
+				<CFSET a_ClauseDisplayTemplate_1 = "TC_ClauseDisplay_CH_ALL.cfm">
+				<CFSET a_PolicyViewTemplate_1    = "Title_Committment_View_Chicago_Title_Ins.cfm">
+					
+						<!--- ===/ Place the default Clauses into the database \=== --->
+						<CFSET a_temp_item_counter_1 = "1">
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'The estate or interest in the land described or referred to in this Commitment and covered herein is  [ Pick One -> Fee Simple - Leasehold - Life Estate - Term for Years ] subject to the annual ground rent of $ [ Dollars ] payable on the [ Number ] days of [ Period of time ].', 'aa_default', 'A1', 3)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Title to the Leasehold estate or interest in the land is at effective date hereof vested in:	[ SELLER 1 ], [ SELLER 2 ].', 'aa_default', 'A1', 4)
+						</CFQUERY>
+							<!--- ================================================================= --->							
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'The land referred to in this Commitment is described as follows:<p>#read_Title.plegaldesc#.', 'aa_default', 'A1', 5)
+						</CFQUERY>
+							<!--- ================================================================= --->							
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Instruments in insurable form which must be executed, delivered and duly filed for record:', 'aa_default', 'B1', 1)
+						</CFQUERY>
+							<!--- ================================================================= --->							
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Assignment from [ SELLER 1 ], [ SELLER 2 ] to [ BUYER 1 ], [ BUYER 2 ] for a consideration of $ #NumberFormat(read_title.Purchase_Price, "999,999,999.00")#.', 'aa_default', 'B11', 1)
+						</CFQUERY>
+							<!--- ================================================================= --->							
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Mortgage or Deed of Trust to be properly executed by [ BUYER 1 ], [ BUYER 2 ] in favor of #read_title.Insured#, in the amount of $ #NumberFormat(read_title.loanamt_float, "999,999,999.00")#.', 'aa_default', 'B11', 2)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Pay the full consideration to, or for the account of, the grantors or mortgagors.', 'aa_default', 'B1', 2)
+						</CFQUERY>
+							<!--- ================================================================= --->							
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Pay all taxes, charges, assessments, levied and assessed against subject premises, which are due and payable.', 'aa_default', 'B1', 3)
+						</CFQUERY>
+							<!--- ================================================================= --->	
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Satisfactory evidence should be had that improvements and/or repairs or alterations thereto are completed; that contractor, sub-contractors, labor and materialmen are paid, have released of record all liens or notice of intent to perfect a lien for labor or materials.', 'aa_default', 'B1', 4)
+						</CFQUERY>
+							<!--- ================================================================= --->	
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Company must be furnished with an executed Chicago Title approved Owners/Seller Affidavit relating to, among other items, parties in possession and mechanic`s liens.', 'aa_default', 'B1', 5)
+						</CFQUERY>
+							<!--- ================================================================= --->								
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Defects, liens, encumbrances, adverse claims or other matters, if any, created, first appearing in the public records or attaching subsequent to the effective date hereof but prior to the date the proposed insured acquires for value of record the estate or interest or mortgage thereon covered by this commitment.', 'aa_default', 'B2', 1)
+						</CFQUERY>
+							<!--- ================================================================= --->	
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Rights or claims of parties other than the Insured in actual possession of any or all of the property.', 'aa_default', 'B2', 2)
+						</CFQUERY>
+							<!--- ================================================================= --->	
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Easements, or claims of easements, not shown by the public records.', 'aa_default', 'B2', 3)
+						</CFQUERY>
+							<!--- ================================================================= --->	
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Encroachments, overlaps, boundary line disputes, and any other matters which would be disclosed by an accurate survey and inspection of the property.', 'aa_default', 'B2', 4)
+						</CFQUERY>
+							<!--- ================================================================= --->		
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Any lien, or right to a lien, for services, labor or material heretofore or after furnished, imposed bylaw and not shown by the public records.', 'aa_default', 'B2', 5)
+						</CFQUERY>
+							<!--- ================================================================= --->	
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Taxes or special assessments which are not shown as existing liens by the public records.', 'aa_default', 'B2', 6)
+						</CFQUERY>
+							<!--- ================================================================= --->	
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'Taxes and other public charges (including assessments by any County, Municipality, Metropolitan District or Commission) payable on an annual basis have been paid through the fiscal year ending [ month day, yyyy ].', 'aa_default', 'B2', 7)
+						</CFQUERY>
+							<!--- ================================================================= --->	
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'This policy does not insure against the balance of any public charges (including assessments by any County, Municipality, Metropolitan District or Commission) payable on an annual basis subsequent to the fiscal year ending [ month day, yyyy ], not yet due and payable. Nor does this Policy insure against possible future tax levies nor against possible public charges as defined above that have not been levied or assessed.', 'aa_default', 'B22', 1)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'If taxes are payable on a semi-annual basis, taxes have been paid through June 30th or December 31, first following the effective date of this policy, whichever of said dates is the first to occur.', 'aa_default', 'B22', 2)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, 'However, this Commitment of title insurance does not insure against possible future tax levies and/or frontage benefit assessments, nor against such public charges as assessments, or the balance thereof for existing or proposed improvements, which may have been levied or assessed, or to be levied or assessed, but which are not now due and payable to said State, County, Municipality, Metropolitan District or Commission.', 'aa_default', 'B23', 1)
+						</CFQUERY>
+							<!--- ================================================================= --->
+						<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+							INSERT INTO Title_Committment_Clauses_Selected_Title(Title_ID, Committment_Item, Committment_Name, a_section_code, Committment_Item_Order)
+							VALUES(#rec_id#, '<p>NOTE:	AS TO LOAN POLICY ONLY. This policy specifically insures that any past, present or future violations of the restrictions, building setback lines, easement area, widening strips, partition walls or other limitations and restrictions referred to herein will not work a forfeiture or reversion of the title or result in a lien or charge superior to the interest of the mortgagee to be insured herein, and that the same have not been violated as of the date of this policy, except as noted.  As used in this paragraph the words "covenants, conditions and restrictions" shall not refer to or include any covenant, condition or restriction relating to environmental protection or regulating or prohibiting the use, storage or release of hazardous or toxic waste or substances on the land.', 'aa_default', 'B23', 2)
+						</CFQUERY>
+							<!--- ================================================================= --->
+				
+			</CFIF>
+		
+		<!--- ===/ Write the data to the database table \=== --->
+					
+			<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+				UPDATE Doc_Title_Insurance_Title
+				SET a_assigned_by = #uid#,
+				Insurance_Co = #Insurance_Company#,
+				FT_Agency = #FT_Agency#,
+				a_InsuranceFormToUse = '#a_InsuranceFormToUse_1#',
+				a_ClauseDisplayTemplate = '#a_ClauseDisplayTemplate_1#',
+				a_PolicyViewTemplate = '#a_PolicyViewTemplate_1#',
+				Proposed_Insured_Owner_1 = '#a_proposed_insured_1#',
+				Proposed_Insured_Owner_2 = '#a_proposed_insured_2#',
+				a_DB_to_use = '#a_database#',
+				a_assigned_date = '#DateFormat(Now(), "m/d/yyyy")#',
+				a_assigned_time = '#TimeFormat(Now(), "HH:mm:ss")#'
+				WHERE Title_ID = #rec_ID#		
+			</CFQUERY>
+
+		<!--- ===/ Start the Tracking database for the Title \=== --->
+		<!--- ===/ Insurance Assignment to an Examiner       \=== --->
+			<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+				INSERT INTO #a_database#(Title_ID)
+				VALUES(#rec_ID#)		
+			</CFQUERY>	
+	</CFIF>
+	
+<!--- ===[ 1 ]==(end)============================================================ --->
+
+		
+		
+		
+		
+		<CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_sel_company">
+		
+			SELECT *
+			FROM companies
+			WHERE ID = #read_Title.comp_ID#
+		
+		</CFQUERY>
+
+		
+
+		<CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_ins_committments">		
+			SELECT *
+			FROM Doc_Title_Insurance_Title
+			WHERE Title_ID = #rec_ID#		
+		</CFQUERY>
+
+
+		<CFIF  #read_ins_committments.insurance_co# GT "0" >
+				
+			<CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="Read_Committment_Doc">		
+				SELECT *
+				FROM #read_ins_committments.a_DB_To_Use#
+				WHERE Title_ID = #rec_ID#		
+			</CFQUERY>	
+			
+		</CFIF>
+		
+
+	<CFIF #read_ins_committments.Insurance_Co# GT "0">
+	
+		<CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_Title_FT_Agency_company">
+		
+			SELECT *
+			FROM Title_FT_Agencies
+			WHERE Title_FT_Agency_ID = #read_ins_committments.FT_Agency#
+			
+		</CFQUERY>	
+		
+		<CFSET a_read_Title_FT_Agency_company = #read_Title_FT_Agency_company.recordcount#>
+
+		<CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_Insurance_company">		
+			SELECT *
+			FROM Title_Companies
+			WHERE Title_Co_ID = #read_ins_committments.Insurance_Co#			
+		</CFQUERY>
+
+		<CFSET a_read_Insurance_company = #read_Insurance_company.recordcount#>
+		
+	<CFELSE>
+	
+		<CFSET a_read_Title_FT_Agency_company = 0>
+		<CFSET a_read_Insurance_company = 0>
+		
+	</CFIF>
+
+		<!--- ===/ Get a List of All of the Insurance Companies \=== --->
+
+			<CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_list_of_Insurance_Co_IDs">				
+				SELECT DISTINCT Title_Co_ID
+				FROM Title_Companies_States
+				 WHERE ST_Abbrev LIKE '%#read_Title.pstate#%'	
+				ORDER BY Title_Co_ID ASC
+			</CFQUERY>
+		<CFSET a_Title_Insurance_Company = ArrayNew(1)>
+		<CFSET a_Title_Co_ID  = ArrayNew(1)>
+		<CFSET Title_Ins_Count = "1">
+		
+		<CFOUTPUT QUERY="read_list_of_Insurance_Co_IDs">
+			<CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_List_of_Insurance_companies">				
+				SELECT *
+				FROM Title_Companies
+				 WHERE Title_Co_ID = #Title_Co_ID#
+			</CFQUERY>
+
+			<CFSET a_Title_Insurance_Company[Title_Ins_Count]  = #read_List_of_Insurance_companies.Company#>
+			<CFSET a_Title_Co_ID[Title_Ins_Count]  = #read_List_of_Insurance_companies.Title_Co_ID#>
+			<CFSET Title_Ins_Count                  = #Title_Ins_Count# + "1">
+		</CFOUTPUT>
+
+		
+		<!--- ===/ Get a List of All of the First Title Agencies \=== --->
+
+			<CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_list_of_FT_Agency_IDs">				
+				SELECT DISTINCT Title_FT_Agency_ID
+				FROM Title_FT_Agencies_States
+				 WHERE ST_Abbrev LIKE '%#read_Title.pstate#%'	
+				ORDER BY Title_FT_Agency_ID ASC
+			</CFQUERY>
+		<CFSET a_FT_Company = ArrayNew(1)>
+		<CFSET a_FT_Agency_ID  = ArrayNew(1)>
+		<CFSET FT_Count = "1">
+	
+		<CFOUTPUT QUERY="read_list_of_FT_Agency_IDs">
+			<CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_list_of_FT_Agencies">				
+				SELECT *
+				FROM Title_FT_Agencies
+				 WHERE Title_FT_Agency_ID = #Title_FT_Agency_ID#
+			</CFQUERY>
+
+			<CFSET a_FT_Company[FT_count]    = #read_list_of_FT_Agencies.Company#>
+			<CFSET a_FT_Agency_ID[FT_count]  = #read_list_of_FT_Agencies.Title_FT_Agency_ID#>
+			<CFSET FT_Count                  = #FT_Count# + "1">
+		</CFOUTPUT>
+
+
+
+<!---- [ ] COMMENTED OUT THE CODE BELOW === --->
+<!---		
+		<!--- ===/ Here is where we move Committment_items up or down \=== --->
+		
+		<CFIF #a_direction# EQ "UP">
+		
+			<CFSET a_calc_up = #c_committment_Item_Order# - 1>
+
+				<CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_temp_committments">		
+					SELECT *
+					FROM Title_Committment_Clauses_Selected_Title
+					WHERE Title_ID = #rec_ID# AND Committment_Item_Order = #a_calc_up# AND a_section_code = '#a_section_code#'
+				</CFQUERY>
+				
+				<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+					UPDATE Title_Committment_Clauses_Selected_Title
+					SET committment_Item_Order = #c_committment_Item_Order#
+					WHERE Title_ID = #rec_ID# AND committment_ID = #read_temp_committments.committment_ID#
+					  AND a_section_code = '#a_section_code#'
+				</CFQUERY>
+				
+				<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+					UPDATE Title_Committment_Clauses_Selected_Title
+					SET committment_Item_Order = #a_calc_up#
+					WHERE Title_ID = #rec_ID# AND committment_ID = #c_committment_ID#
+					  AND a_section_code = '#a_section_code#'
+				</CFQUERY>
+				
+		
+		<CFELSEIF #a_direction# EQ "Down">
+		
+			<CFSET a_calc_down = #c_committment_Item_Order# + 1>
+
+				<CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_temp_committments">		
+					SELECT *
+					FROM Title_Committment_Clauses_Selected_Title
+					WHERE Title_ID = #rec_ID# AND committment_Item_Order = #a_calc_down#
+					  AND a_section_code = '#a_section_code#'
+				</CFQUERY>
+				
+				<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+					UPDATE Title_Committment_Clauses_Selected_Title
+					SET committment_Item_Order = #c_committment_Item_Order#
+					WHERE Title_ID = #rec_ID# AND committment_ID = #read_temp_committments.committment_ID#
+					  AND a_section_code = '#a_section_code#'
+				</CFQUERY>
+				
+				<CFQUERY DATASOURCE="First_Title_Main_Admin">		
+					UPDATE Title_Committment_Clauses_Selected_Title
+					SET committment_Item_Order = #a_calc_down#
+					WHERE Title_ID = #rec_ID# AND committment_ID = #c_committment_ID#
+					 AND a_section_code = '#a_section_code#'
+				</CFQUERY>
+		
+		</CFIF>
+<!---- [ ] COMMENTED OUT THE ABOVE CODE === --->
+<CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_existing_committments">		
+			SELECT *
+			FROM Title_Committment_Clauses_Selected_Title
+			WHERE Title_ID = #rec_ID#
+			ORDER BY committment_Item_Order ASC
+		</CFQUERY>			
+		
+
+<CFIF #read_ins_committments.a_assigned_by# GT "0" >
+
+
+		<!--- ===/ Get the name of the person that is  \=== --->
+		<!--- ===/ STARTED the Loan Pay Off Process        \=== --->
+		
+		<CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_user_assigning">
+		
+			SELECT *
+			FROM first_admin
+			WHERE ID = #read_ins_committments.a_assigned_by#
+		
+		</CFQUERY>		
+		
+		
+		<CFSET user_that_started = #read_user_assigning.fname# & " " & #read_user_assigning.lname#>
+
+		
+<CFELSE>
+		<CFSET user_that_started = "Not Started Yet">
+</CFIF>
+
+
+<CFIF #read_ins_committments.a_recieved_by# GT "0">
+
+		<!--- ===/ Get the name of the person that is  \=== --->
+		<!--- ===/ FINISHED the Loan Pay Off Process        \=== --->
+		
+		<CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_user_recieving">
+		
+			SELECT *
+			FROM first_admin
+			WHERE ID = #read_ins_committments.a_recieved_by#
+		
+		</CFQUERY>		
+		
+		<CFSET user_that_started = #read_user_recieving.fname# & " " & #read_user_recieving.lname#>
+
+<CFELSE>
+		<CFSET user_that_finished = "Not Finished Yet">
+</CFIF>	
+	
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<title>1st Title & Escrow, Inc. </title>
+</head>
+
+<BODY BGCOLOR="e1e1e1" TEXT="000000" LINK="FF0000" VLINK="800000" ALINK="FF00FF" BACKGROUND="?"  TopMargin=0 LeftMargin=0 MarginWidth=0 MarginHeight=0>
+
+<CENTER>
+<CENTER>
+<table width=790 cellpadding=1 cellspacing=1 border=0 bgcolor=gray>
+	<tr>
+		<td width=790 align=center valign=top>
+		
+<table width=790 cellpadding=1 cellspacing=1 border=0 bgcolor=white>
+	<tr>
+			<td width=790 align=left valign=top bgcolor=green>
+				<FONT FACE=ARIAL SIZE=2 color="white">
+				<CENTER><B>Title Insurance Committment</B></CENTER>
+			</TD>
+		</TR>
+	<tr>
+		<td width=790 align=center valign=top bgcolor=e1e1e1>
+
+		<!--- <CFINCLUDE TEMPLATE="./includes/title_top_navu.cfm"> --->
+		<p>
+
+ <table width=519 cellpadding=1 cellspacing=1 border=0 bgcolor=gray>
+ <CFFORM NAME="frm" ACTION="./Title_vendor_data_form.cfm?rec_id=#rec_id#&a_trigger=1&company_id=#company_ID#" METHOD=POST>
+
+
+		<tr>
+			<td width=519  align=right valign=top bgcolor=e1e1e1>
+
+	<!---<table width=518 cellpadding=1 cellspacing=1 border=0 bgcolor=green>
+	
+	 <CFIF #a_read_Insurance_company# GT "0" OR #a_read_Insurance_company# GT "0">
+<CFOUTPUT>	
+		<tr>
+			<td width=199  align=right valign=top bgcolor=green>
+				<font size=2 color=white face=arial>
+				Title Insurance Co. - 
+			</td>
+
+			<td width=319  align=center valign=top bgcolor=green>
+				<font size=2 color=white face=arial>
+				<B>#read_Insurance_company.company#</B>
+			</td>
+		</tr>
+		<tr>
+			<td width=199  align=right valign=top bgcolor=green>
+				<font size=2 color=white face=arial>
+				Title Agency - 
+			</td>
+
+			<td width=319  align=center valign=top bgcolor=green>
+				<font size=2 color=white face=arial>
+				<B>#read_Title_FT_Agency_company.company#</B>
+			</td>
+		</tr>
+</CFOUTPUT>				 
+
+	<CFELSE>
+		<tr>
+			<td width=518 colspan=2  align=left valign=top bgcolor=e1e1e1>
+				<FONT SIZE=2 color=black face=verdana> You need to assign a Title Insurance Company and a Title Agency to this Title Committment.
+			</td>	
+		</tr>
+		
+		<tr>
+			<td width=199  align=right valign=top bgcolor=green>
+				<font size=2 color=white face=arial>
+				Title Insurance Co. - 
+			</td>
+
+			<td width=319  align=right valign=top bgcolor=e1e1e1>
+				<SELECT NAME="Insurance_Company" 			
+					size="1" 
+					style="font-size: 9; 
+					font-family: verdana; 
+					font-style: normal; 
+					color: blue; 
+					background-color: e1e1e1; 
+					border-color: e1e1e1; 
+					border-left-width: thin; 
+					border-right-width: thin; 
+					border-top-width: thin; 
+					border-bottom-width: thin; 
+					border-width: thin; 
+					border-style: bar; 
+					clear: none; 
+					float: none;"
+					>
+		<CFLOOP FROM="1" TO="#ArrayLen(a_Title_Insurance_Company)#" INDEX="RTR">
+			<CFOUTPUT >
+				<OPTION VALUE="#a_Title_Co_ID[RTR]#">#a_Title_Insurance_Company[RTR]#</OPTION>
+			</CFOUTPUT>
+		</CFLOOP>
+					</SELECT>
+			</td>
+		</tr>
+		<tr>
+			<td width=199  align=right valign=top bgcolor=green>
+				<font size=2 color=white face=arial>
+				Title Agency - 
+			</td>
+
+			<td width=319  align=right valign=top bgcolor=e1e1e1>
+				<SELECT NAME="FT_Agency" 			
+					size="1" 
+					style="font-size: 9; 
+					font-family: verdana; 
+					font-style: normal; 
+					color: blue; 
+					background-color: e1e1e1; 
+					border-color: e1e1e1; 
+					border-left-width: thin; 
+					border-right-width: thin; 
+					border-top-width: thin; 
+					border-bottom-width: thin; 
+					border-width: thin; 
+					border-style: bar; 
+					clear: none; 
+					float: none;" 
+					rows="5" 
+					cols="45" 
+					>
+
+		<CFLOOP FROM="1" TO="#ArrayLen(a_FT_Company)#" INDEX="TRT">
+			<CFOUTPUT >
+				<OPTION VALUE="#a_FT_Agency_ID[TRT]#">#a_FT_Company[TRT]#</OPTION>
+			</CFOUTPUT>
+		</CFLOOP>
+					</SELECT>
+			</td>
+		</tr>
+		<tr>
+			<td width=518 colspan=2  align=right valign=top bgcolor=e1e1e1>
+				<INPUT TYPE=IMAGE SRC="./images/button_submit.gif" border=0> 
+			</td>	
+		</tr>
+	</CFIF>
+
+
+		
+</table>
+			</td>
+		</tr>		
+</table>
+<p>
+<p>
+<CFOUTPUT>		 --->
+<!--- ================================================================ --->
+<!--- <table width=519 cellpadding=1 cellspacing=1 border=0 bgcolor=gray>
+		<tr>
+			<td width=200  align=right valign=top bgcolor=d3d3d3>
+				<font size=2 color=black face=arial>
+				Person Obtaining Info - 
+			</td>
+			<td width=319  align=left valign=top bgcolor=e1e1e1>
+				<font size=2 color=blue face=verdana>
+				<B>#user_that_started#</B>
+			</td>
+		</tr>
+
+		<tr>
+			<td width=200  align=right valign=top bgcolor=d3d3d3>
+				<font size=2 color=black face=arial>
+				Date Started - 
+			</td>
+			<td width=319  align=left valign=top bgcolor=e1e1e1>
+				<font size=2 color=blue face=verdana>
+				<B>#read_ins_committments.a_assigned_date#</B>
+			</td>
+		</tr>
+
+		<tr>
+			<td width=200  align=right valign=top bgcolor=d3d3d3>
+				<font size=2 color=black face=arial>
+				Time Started - 
+			</td>
+			<td width=319  align=left valign=top bgcolor=e1e1e1>
+				<font size=2 color=blue face=verdana>
+				<B>#read_ins_committments.a_assigned_time#</B>
+			</td>
+		</tr>
+
+		<tr>
+			<td width=200  align=right valign=top bgcolor=d3d3d3>
+				<font size=2 color=black face=arial>
+				Person Completing Info - 
+			</td>
+			<td width=319  align=left valign=top bgcolor=e1e1e1>
+				<font size=2 color=green face=verdana>
+				<B>#user_that_finished#</B>
+			</td>
+		</tr>
+
+		<tr>
+			<td width=200  align=right valign=top bgcolor=d3d3d3>
+				<font size=2 color=black face=arial>
+				Date Completed - 
+			</td>
+			<td width=319  align=left valign=top bgcolor=e1e1e1>
+				<font size=2 color=green face=verdana>
+				<B>#read_ins_committments.a_recieved_date#</B>
+			</td>
+		</tr>
+
+		<tr>
+			<td width=200  align=right valign=top bgcolor=d3d3d3>
+				<font size=2 color=black face=arial>
+				Time Completed - 
+			</td>
+			<td width=319  align=left valign=top bgcolor=e1e1e1>
+				<font size=2 color=green face=verdana>
+				<B>#read_ins_committments.a_recieved_time#</B>
+			</td>
+		</tr>
+</table>
+=========================================================== 
+<p> --->
+<table width=720 cellpadding=1 cellspacing=1 border=0 bgcolor=green>
+	
+	<CFIF #a_read_Insurance_company# GT "0" OR #a_read_Insurance_company# GT "0">
+<CFOUTPUT>	
+		<tr>
+			<td width=299  align=right valign=top bgcolor=green>
+				<font size=2 color=white face=arial>
+				Title Insurance Co. - 
+			</td>
+
+			<td width=219  align=left valign=top bgcolor=green>
+				<font size=2 color=white face=arial>
+				<B>#read_Insurance_company.company#</B>
+			</td>
+		</tr>
+		<tr>
+			<td width=299  align=right valign=top bgcolor=green>
+				<font size=2 color=white face=arial>
+				Title Agency - 
+			</td>
+
+			<td width=219  align=left valign=top bgcolor=green>
+				<font size=2 color=white face=arial>
+				<B>#read_Title_FT_Agency_company.company#</B>
+			</td>
+		</tr>
+</CFOUTPUT> </cfif></table>
+<cfoutput>
+<table width=700 cellpadding=1 cellspacing=1 border=0 bgcolor=white>
+<CFIF #a_read_Title_FT_Agency_company# GT "0">
+
+	<tr>
+		<td width=700 align=left valign=top bgcolor=white>
+			<font size=2 color=black face=arial>
+			<CFINCLUDE TEMPLATE="#read_ins_committments.a_InsuranceFormToUse#.cfm">
+		</TD>
+	<!--- </TR>
+<td width=700 colspan=2  align=right valign=top bgcolor=ELELEL>
+				<INPUT TYPE=IMAGE SRC="./images/button_submit.gif" border=0> 
+</td>	 --->
+<CFELSE>
+
+	<tr>
+		<td width=581 align=center valign=top bgcolor=red>
+			<font size=2 color=black face=arial>
+			<b>-- Insurance company not assigned --<b>
+		</TD>
+	</TR>
+
+</CFIF>
+
+</table>
+
+</CFOUTPUT>		
+
+
+<!--- ====================================================================== --->
+<!--- ====================================================================== --->
+<!--- ====================================================================== --->
+
+</td>
+</tr>
+
+	</table>
+
+			
+			</TD>
+		</TR>
+<tr>
+			
+		</tr>
+	</table>
+ </CFFORM>	 
+</BODY>
+</HTML>
+	
+	
+	

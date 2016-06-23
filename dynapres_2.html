@@ -1,0 +1,172 @@
+<CFPARAM NAME="a_trigger" DEFAULT="0">
+<CFPARAM NAME="comp_id" DEFAULT="">
+<CFPARAM NAME="pass" DEFAULT="">
+<CFPARAM NAME="txtfield" DEFAULT="">
+<CFPARAM NAME="ExportFile" DEFAULT="">
+
+
+
+<html>
+<head>
+<title>Dynatek Login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <!--- P {font:bold 11px Courier,Verdana,Tahoma,Arial} --->
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<script language="JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<STYLE TYPE="text/css">
+body {background-attachment:fixed;scrollbar-base-color:#708090}
+
+.menu1 {color:#FFFFFF;font:normal bold 13px Arial, Helvetica, sans-serif;text-align:center;font-color:#FFFFFF}
+.menu1:link    {text-decoration:none;color:#FFFFFF;} 
+.menu1:visited {text-decoration:none;color:#FFFFFF} 
+.menu1:hover   {font:normal bold 13px Arial, Helvetica, sans-serif;text-decoration:none;color:#000000} 
+.menu3 {color:#FFFFFF;font:normal bold 10px Verdana, Arial, Helvetica, sans-serif;text-align:center;font-color:#FFFFFF}
+.menu3:link    {text-decoration:none;color:#FFFFFF} 
+.menu3:visited {text-decoration:none;color:#FFFFFF} 
+.menu3:hover   {font:normal bold 11px Verdana, Arial, Helvetica, sans-serif;text-decoration:none;color:#FF3300}
+
+.menu2 {color:#FFFFFF;font:normal bold 13px Arial, Helvetica, sans-serif;text-align:center;font-color:#FFFFFF}
+.menu2:link    {text-decoration:none;color:#000000} 
+.menu2:visited {text-decoration:none;color:#000000} 
+.menu2:hover   {font:normal bold 14px Arial, Helvetica, sans-serif;text-decoration:none;color:#FFFFFF}
+</STYLE> 
+
+</head>
+<body bgcolor="#294163" link="#FF0000" vlink="#FF0000" alink="#FF0000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('/client/images/nav_company_on.jpg')">
+<table width="780" height="110" border=0 cellpadding=0 cellspacing=0 background="http://<cfoutput>#cgi.server_name#</cfoutput>/client/images/banner_black_wout_logo.jpg" valign=top>
+  <tr> 
+    <td rowspan="2" valign="top" width="220"><cfinclude template="logo_swap_include.cfm"></td>
+    <td valign="top" align="right">
+	<br>
+</td>
+  </tr>
+  <tr> 
+    <td valign="top" align="center" width="560"><nobr></nobr><br>
+      &nbsp;</td>
+  </tr>
+</table>
+
+
+<table cellpadding="0" cellspacing="0" border="0" width="780">
+	<tr>
+		<td bgcolor="FECE62" valign="top" width="780">
+
+
+		
+	<table cellpadding="0" cellspacing="0" border="0" width="780">
+	<tr>
+		<td height="10" bgcolor="navy" valign="top" width="780">
+			</td>
+
+</tr>
+		<tr>
+		<td bgcolor="FFFFFF" valign="top">
+		
+		<table width="77%" cellpadding="0" cellspacing="0" border="0" align="center" valign="top">
+				<tr>
+		<td bgcolor="FFFFFF" valign="top"><br><br><br><br>
+		<font color="navy" face="Arial, Helvetica, sans-serif" size="3">
+		<p>
+<b><p><center>Save Time and Money using MORvision and <cfoutput>#session.site.short_name#</cfoutput> as your Loan origination and Title and Closing services partner! </center></p></font>  <font color="navy" face="Arial, Helvetica, sans-serif" size="2">
+</P>
+<BR>
+<P>An Advanced Solution - a seamless connection from MORvision to <cfoutput>#session.site.short_name#</cfoutput> doesn't require the purchase, installation or maintenance that is common in custom interfaces. The <cfoutput>#session.site.short_name#</cfoutput> Plug-In enables the two systems to communicate as one. </P>
+<BR>
+<p>Single-Click Automation - The <cfoutput>#session.site.short_name#</cfoutput> Plug-In works with one-click, automatically launching and exchanging data with the application. Title report data is then  repopulated into MORvision. Lenders can quickly and easily view every loan attachment from right within MORvision, making it their system of record. </p>
+<BR>
+<p>Streamlined Processing - eliminate extra navigation and cumbersome steps, re-keying, and data-entry errors. The result is a streamlined process thereby shortening the loan processing cycle and makes the tedious service-ordering process transparent to the user.</p>
+<BR>
+<p>Award Winning Process - Winning Mortgage Technology Magazine's prestigious Synergy Award for the advancement of seamless end-to-end e-commerce has been just one testament to the power of the <cfoutput>#session.site.short_name#</cfoutput> Plug-In. Customers and service providers alike also sing the praises of this technology. 
+</p>
+</b>
+</font></b>
+<br><br><br><br>
+</td>
+	</tr>
+
+</table>
+</td>
+	</tr>
+	<tr>
+		<td bgcolor="000000">
+			<table cellpadding="0" cellspacing="0" border="0" width="98%" align="center">
+				<tr>
+					<td width="47%"><font face="Verdana, Arial, Helvetica, sans-serif" color="FFFFFF" size="1"><b><a class="menu3" href="http://<cfoutput>#cgi.server_name#</cfoutput>/client/main.cfm">Home<a> | <a class="menu3" href="http://<cfoutput>#cgi.server_name#</cfoutput>/client/termuse.cfm">Terms of Use<a>  | <a class="menu3" href="http://<cfoutput>#cgi.server_name#</cfoutput>/client/policy.cfm">Privacy Policy<a></b></font></td>
+				<td width="43%" align="right"><font face="Verdana, Arial, Helvetica, sans-serif" color="FFFFFF" size="1"><b>© 2003-<cfoutput>#DatePart("yyyy", Now())#</cfoutput> <cfoutput>#session.site.long_name#</cfoutput></b></font></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+
+	</td>
+	</tr>
+</table>
+
+	</td>
+	</tr>
+</table>
+
+<script type="text/javascript">
+
+ 
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', 'UA-195021-17']);
+
+  _gaq.push(['_trackPageview']);
+
+ 
+
+  (function() {
+
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
+  })();
+
+ 
+
+</script>
+
+</body>
+</html>

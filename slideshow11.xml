@@ -1,0 +1,17 @@
+<slideshow>
+<parameters>
+	<registration_code></registration_code>
+	<movie_width>240</movie_width>
+	<movie_height>180</movie_height>
+	<bgcolor>EEEEEE</bgcolor>
+	<pause_time>60</pause_time>
+	<speed>2</speed>
+	<image_link>http://www.firsttitleservices.com/</image_link>
+	<link_target>_self</link_target>
+</parameters>
+<images>
+	<image_path>hudimages/pic1.jpg</image_path>
+	<image_path>hudimages/pic2.jpg</image_path>
+	<image_path>hudimages/pic3.jpg</image_path>
+</images>
+</slideshow>

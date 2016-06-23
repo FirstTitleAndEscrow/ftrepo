@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<FEES_REQUEST xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<LOAN_TYPE>Purchase</LOAN_TYPE >
+<STATE>CA</STATE>
+<COUNTY>Los Angeles</COUNTY>
+<CITY>Venice</CITY>
+<PURCHASE_PRICE>200000</PURCHASE_PRICE>
+<LOAN_AMOUNT>180000</LOAN_AMOUNT>
+<COMPANY_ID>100</COMPANY_ID>
+</FEES_REQUEST>

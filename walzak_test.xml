@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><REQUEST_GROUP
+MismoVersionID="2.3.1"><SUBMITTING_PARTY
+_Name="QACompany"/><RECEIVING_PARTY _Name="First Title"/><REQUEST
+RequestDatetime="2007/11/07 14:52:53" InternalAccountIdentifier="48836"
+LoginAccountIdentifier="process" LoginAccountPassword="3ndle$$"><KEY
+_Name="HTMLFile" _Value="true"/><KEY _Name="TextFile"
+_Value="true"/><REQUEST_DATA><CREDIT_REQUEST MISMOVersionID="2.3.1"
+LenderCaseIdentifier="711-FTCR-1194465173"
+RequestingPartyRequestedByName="Walzak Risk"><CREDIT_REQUEST_DATA
+CreditRequestID="CreditReq0001" BorrowerID="Borrower"
+CreditReportRequestActionType="Submit" CreditReportType="Merge"
+CreditRequestType="Individual"><CREDIT_REPOSITORY_INCLUDED
+_EquifaxIndicator="Y" _ExperianIndicator="Y"
+_TransUnionIndicator="Y"/></CREDIT_REQUEST_DATA><LOAN_APPLICATION><BORROWER BorrowerID="Borrower" _BirthDate="--" _FirstName="RONALD" _MiddleName="" _LastName="VAN DE POL" _PrintPositionType="Borrower" _SSN="548-70-2077" _UnparsedName="" MaritalStatusType=""><_RESIDENCE _StreetAddress="5602 PINTAIL CT" _City="STOCKTON" _State="CA" _PostalCode="95207" BorrowerResidencyDurationYears="0"/></BORROWER></LOAN_APPLICATION></CREDIT_REQUEST></REQUEST_DATA></REQUEST></REQUEST_GROUP>

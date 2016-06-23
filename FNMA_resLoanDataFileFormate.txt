@@ -1,0 +1,498 @@
+EH-010	N/A	‘EH ‘	1 	3 	S
+EH-020	N/A	Institution ID	4 	6 	
+EH-030	N/A	Institution Name	10 	25 	
+EH-040	N/A	Date	35 	11 	
+EH-050	N/A	Envelope Control Number	46 	9 	
+!NA!			
+TH-010	N/A	‘TH ‘	1 	3 	S
+TH-020	N/A	Transaction ID	4 	11 	
+TH-030	N/A	Transaction Control Number	15 	9 	
+!NA!			
+TPI-010	N/A	TPI	1 	3 	S
+TPI-020	N/A	Version ID	4 	5 	
+TPI-030	N/A	Identifier Type Code	9 	2 	
+TPI-040	N/A	Identifier	11 	30 	
+TPI-050	N/A	Import Action Indicator	41 	1 	
+!NA!			
+000-010	`	000	1 	3 	S
+000-020	`	File Type	4	3	
+000-030	`	File Version ID	7	5 	
+000-040	`	Export Version Indicator	12	1 	
+!NA!			
+00A-010	`	00A	1 	3 	S
+00A-020	Top	The income or assets of a person other than the Borrower (including the Applicant's spouse).	4 	1 	
+00A-030	Top	The income or assets of the Applicant's spouse will not be used as a basis for...	5 	1 	
+!NA!			
+01A-010	I	01A	1 	3 	S
+01A-020	I	Mortgage Applied For	4 	2 	
+01A-030	I	Mortgage Applied For(Other)	6 	80 	
+01A-040	I	Agency Case Number	86 	30 	
+01A-050	I	Case Number	116 	15 	
+01A-060	I	Loan Amount	131 	15 	
+01A-070	I	Interest Rate	146 	7 	
+01A-080	I	No. of Months	153 	3 	
+01A-090	I	Amortization Type	156 	2 	
+01A-100	I	Amortization Type OtherExplanation	158 	80 	
+01A-110	I	ARM Textual Description	238 	80 	
+!NA!			
+02A-010	`	02A	1 	3 	S
+02A-020	II	Property Street Address	4 	50 	
+02A-030	II	Property City	54 	35 
+02A-040	II	Property State	89 	2 	
+02A-050	II	Property Zip Code	91 	5 	
+02A-060	II	Property Zip Code Plus Four	96 	4 	
+02A-070	II	No. of Units	100 	3 	
+02A-080	II	Legal Description of SubjectProperty – Code	103 	2 	
+02A-090	II	Legal Description of SubjectProperty – Text	105 	80 	
+02A-100	II	Year Built	185 	4 	
+!NA!			
+PAI-010	`	PAI	1 	3 	S
+PAI-020	`	House Number	4 	11 	S
+PAI-030	`	Street Name	15 	40 	S
+PAI-040	`	Unit Number	55 	11 	S
+!NA!			
+02B-010	`	02B	1 	3 	S
+02B-020	`	Reserved for Future Use	4 	2 	
+02B-030	II	Purpose of Loan	6 	2 	
+02B-040	II	Purpose of Loan (Other)	8 	80 	
+02B-050	II	Property will be	88 	1 	
+02B-060	II	Manner in which Title will be held	89 	60 	
+02B-070	II	Estate will be held in	149 	1 	
+02B-080	II	(Estate will be held in) Leasehold expiration date	150 	8 	
+!NA!			
+02C-010	`	02C	1 	3 	M
+02C-020	II	Titleholder Name	4 	60 	
+!NA!			
+02D-010	`	02D	1 	3 	S
+02D-020	II	Year Lot Acquired (Construction) or Year Acquired (Refinance)	4 	4 	
+02D-030	II	Original Cost (Construction or Refinance)	8 	15 	
+02D-040	II	Amount Existing Liens(Construction or Refinance)	23 	15 	
+02D-050	II	(a) Present Value of Lot	38 	15 	
+02D-060	II	(b) Cost of Improvements	53 	15 	
+02D-070	II	Purpose of Refinance	68 	2 	
+02D-080	II	Describe Improvements	70 	80 	
+02D-090	II	(Describe Improvements)made/ to be made	150 	1 	
+02D-100	II	(Describe Improvements) Cost	151 	15 	
+!NA!			
+02E-010	`	02E	1 	3 	M
+02E-020	II	Down Payment Type Code	4 	2 	
+02E-030	II	Down Payment Amount	6 	15 	
+02E-040	II	Down Payment Explanation	21 	80 	
+!NA!			
+03A-010	`	03A	1 	3 	SA
+03A-020	III	Applicant / Co-ApplicantIndicator	4 	2 	
+03A-030	III	Applicant Social SecurityNumber	6 	9 	
+03A-040	III	Applicant First Name	15 	35 	
+03A-050	III	Applicant Middle Name	50 	35 	
+03A-060	III	Applicant Last Name	85 	35 	
+03A-070	III	Applicant Generation	120 	4 	
+03A-080	III	Home Phone	124 	10 
+03A-090	III	Age	134 	3 	
+03A-100	III	Yrs. School	137 	2 	
+03A-110	III	Marital Status	139 	1 	
+03A-120	III	Dependents (no.)	140 	2 	
+03A-130	III	Completed Jointly/Not Jointly	142 	1 	
+03A-140	III	Cross-Reference Number	143 	9 	
+03A-150	III	Date of Birth	152 	8 	
+03A-160	III	Email Address	160 	80 	
+!NA!			
+03B-010	`	03B	1 	3 	M
+03B-020	III	Applicant Social SecurityNumber	4 	9 	
+03B-030	III	Dependent's Age	13 	3 	
+!NA!			
+03C-010	`	03C	1 	3 	M
+03C-020	III	Applicant Social SecurityNumber	4 	9 	
+03C-030	III	(Present/Former)	13 	2 	
+03C-040	III	Residence Street Address	15 	50 	
+03C-050	III	Residence City	65 	35 	
+03C-060	III	Residence State	100 	2 	
+03C-070	III	Residence Zip Code	102 	5 	
+03C-080	III	Residence Zip Code PlusFour	107 	4 	
+03C-090	III	Own/Rent/Living Rent Free	111 	1 	
+03C-100	III	No. Yrs.	112 	2 	
+03C-110	III	No. Months	114 	2 	
+03C-120	`	Country	116 	50 	
+!NA!			
+04A-010	`	04A	1 	3 	SA
+04A-020	IV	Applicant Social SecurityNumber	4 	9 	
+04A-030	IV	Employer Name	13 	35 	
+04A-040	IV	Employer Street Address	48 	35 	
+04A-050	IV	Employer City	83 	35 	
+04A-060	IV	Employer State	118 	2 	
+04A-070	IV	Employer Zip Code	120 	5 	
+04A-080	IV	Employer Zip Code Plus Four	125 	4 	
+04A-090	IV	Self Employed	129 	1 	
+04A-100	IV	Yrs. on this job	130 	2 	
+04A-110	IV	Months on this job	132 	2 	
+04A-120	IV	Yrs. employed in this line of work/profession	134 	2 	
+04A-130	IV	Position / Title / Type ofBusiness	136 	25 	
+04A-140	IV	Business Phone	161 	10 	
+!NA!			
+04B-010	`	04B	1 	3 	M
+04B-020	IV	Applicant Social SecurityNumber	4 	9 	
+04B-030	IV	Employer Name	13 	35 
+04B-040	IV	Employer Street Address	48 	35 	
+04B-050	IV	Employer City	83 	35 	
+04B-060	IV	Employer State	118 	2 	
+04B-070	IV	Employer Zip Code	120 	5 	
+04B-080	IV	Employer Zip Code Plus Four	125 	4 	
+04B-090	IV	Self Employed	129 	1 	
+04B-100	IV	Current Employment Flag	130 	1 	
+04B-110	IV	From Date	131 	8 	
+04B-120	IV	To Date	139 	8 	
+04B-130	IV	Monthly Income	147 	15 	
+04B-140	IV	Position / Title / Type ofBusiness	162 	25 	
+04B-150	IV	Business Phone	187 	10 	
+!NA!			
+05H-010	`	05H	1 	3 	M
+05H-020	V	Applicant Social SecurityNumber	4 	9 	
+05H-030	V	Present/Proposed Indicator	13 	1 	
+05H-040	V	Housing Payment Type Code	14 	2 	
+05H-050	V	Housing Payment Amount(Monthly Housing Exp.)	16 	15 	
+!NA!			
+05I-010	`	05I	1 	3 	M
+05I-020	V	Applicant Social SecurityNumber	4 	9 	
+05I-030	V	Type of Income Code	13 	2 	
+05I-040	V	Income Amount (MonthlyIncome)	15 	15 	
+!NA!			
+06A-010	`	06A	1 	3 	M
+06A-020	VI	Applicant Social SecurityNumber	4 	9 	
+06A-030	VI	Cash deposit toward purchase held by	13 	35 	
+06A-040	VI	Cash or Market Value	48 	15 	
+!NA!			
+06B-010		06B	1 	3 	M
+06B-020	VI	Applicant Social SecurityNumber	4 	9 	
+06B-030	VI	Acct. no.	13 	30 	
+06B-040	VI	Life Insurance Cash orMarket Value	43 	15 	
+06B-050	VI	Life insurance Face Amount	58 	15 	
+!NA!			
+06C-010	`	06C	1 	3 	M
+06C-020	VI	Applicant Social SecurityNumber	4 	9 	
+06C-030	VI	Account/Asset Type	13 	3 	
+06C-040	VI	Depository/Stock/BondInstitution Name	16 	35 	
+06C-050	VI	Depository Street Address	51 	35	
+06C-060	VI	Depository City	86 	35 	
+06C-070	VI	Depository State	121 	2 	
+06C-080	VI	Depository Zip Code	123 	5 	
+06C-090	VI	Depository Zip Code PlusFour	128 	4 	
+06C-100	VI	Acct. no.	132 	30 	
+06C-110	VI	Cash or Market Value	162 	15 	
+06C-120	VI	Number of Stock/BondShares	177 	7 	
+06C-130	VI	Asset Description	184 	80 	
+06C-140	`	Reserved for Future Use	264 	1 	
+06C-150	`	Reserved for Future Use	265 	2 	
+!NA!			
+06D-010		06D	1 	3 	M
+06D-020	VI	Applicant Social SecurityNumber	4 	9 	
+06D-030	VI	Automobile Make/ Model	13 	30 	
+06D-040	VI	Automobile Year	43 	4 	
+06D-050	VI	Cash or Market Value	47 	15 	
+!NA!			
+06F-010		06F	1 	3 	M
+06F-020	VI	Applicant Social SecurityNumber	4 	9 	
+06F-030	VI	Expense Type Code	13 	3 	
+06F-040	VI	Monthly Payment Amount	16 	15 	
+06F-050	VI	Months Left to Pay	31 	3 	
+06F-060	VI	Alimony/ Child Support/ Separate Maintenance Owed To	34 	60 	
+!NA!			
+06G-010	`	06G	1 	3 	M
+06G-020	VI	Applicant Social SecurityNumber	4 	9 	
+06G-030	VI	Property Street Address	13 	35 	
+06G-040	VI	Property City	48 	35 	
+06G-050	VI	Property State	83 	2 	
+06G-060	VI	Property Zip Code	85 	5 	
+06G-070	VI	Property Zip Code Plus Four	90 	4 	
+06G-080	VI	Property Disposition	94 	1 	
+06G-090	VI	Type of Property	95 	2 	
+06G-100	VI	Present Market Value	97 	15 	
+06G-110	VI	Amount of Mortgages & Liens	112 	15 	
+06G-120	VI	Gross Rental Income	127 	15 	
+06G-130	VI	Mortgage Payments	142 	15 	
+06G-140	VI	Insurance, MaintenanceTaxes & Misc.	157 	15 	
+06G-150	VI	Net Rental Income	172 	15 	
+06G-160	VI	Current Residence Indicator	187 	1 	
+06G-170	VI	Subject Property Indicator	188 	1 	
+06G-180	VI	REO Asset ID	189 	2 	
+06G-190	`	Reserved for Future Use	191 	15 	
+!NA!			
+06H-010		06H	1 	3 	M
+06H-020	VI	Applicant Social SecurityNumber	4 	9 	
+06H-030	VI	Alternate First Name	13 	35 	
+06H-040	VI	Alternate Middle Name	48 	35 	
+06H-050	VI	Alternate Last Name	83 	35 	
+06H-060	VI	Unused	118 	35 	
+06H-070	VI	Unused	153 	30 	
+!NA!			
+06L-010	`	06L	1 	3 	M
+06L-020	VI	Applicant Social SecurityNumber	4 	9 	
+06L-030	VI	Liability Type	13 	2 	
+06L-040	VI	Creditor Name	15 	35 	
+06L-050	VI	Creditor Street Address	50 	35 	
+06L-060	VI	Creditor City	85 	35 	
+06L-070	VI	Creditor State	120 	2 	
+06L-080	VI	Creditor Zip Code	122 	5 	
+06L-090	VI	Creditor Zip Code Plus Four	127 	4 	
+06L-100	VI	Acct. no.	131 	30 	
+06L-110	VI	Monthly Payment Amount	161 	15 	
+06L-120	VI	Months Left to Pay	176 	3 	
+06L-130	VI	Unpaid Balance	179 	15 	
+06L-140	VI	Liability will be paid prior to closing	194 	1 	
+06L-150	VI	REO Asset ID	195 	2 	
+06L-160	`	Resubordinated Indicator	197 	1 	
+06L-170	`	Omitted Indicator	198 	1 	
+06L-180	VI	Subject Property Indicator	199 	1 	
+06L-190	VI	Rental Property Indicator	200 	1 	
+!NA!			
+06S-010	`	06S	1 	3 	M
+06S-020	VI	Applicant Social SecurityNumber	4 	9 	
+06S-030	VI	Summary Amount TypeCode	13 	3 	
+06S-040	VI	Amount	16 	15 	
+!NA!			
+07A-010	`	07A	1 	3 	S
+07A-020	VII	a. Purchase price	4 	15 	
+07A-030	VII	b. Alterations, improvements, repairs	19 	15 	
+07A-040	VII	c. Land	34 	15 	
+07A-050	VII	d. Refinance (Inc. debts to be paid off)	49 	15 	
+07A-060	VII	e. Estimated prepaid items	64 	15 	
+07A-070	VII	f. Estimated closing costs	79 	15 	
+07A-080	VII	g. PMI MIP, Funding Fee	94 	15 	
+07A-090	VII	h. Discount (if Applicant will pay)	109 	15 	
+07A-100	VII	j. Subordinate financing	124 	15 	
+07A-110	VII	k. Applicant's closing costs paid by Seller	139 	15 	
+07A-120	VII	n. PMI, MIP, Funding Fee financed	154 	15 	
+!NA!			
+07B-010	`	07B	1 	3 	M
+07B-020	`	Other Credit Type Code	4 	2 	
+07B-030	VII	Amount of Other Credit	6 	15 	
+!NA!			
+08A-010	`	08A	1 	3 	SA
+08A-020	VIII	Applicant Social SecurityNumber	4 	9 	
+08A-030	VIII	a. Are there any outstanding judgments against you?	13 	1 	
+08A-040	VIII	b. Have you been declared bankrupt within the past 7 years?	14 	1 	
+08A-050	VIII	c. Have you had property foreclosed upon or given title or deed in lieu thereof in the last 7 years?	15 	1 	
+08A-060	VIII	d. Are you a party to a lawsuit?	16 	1 	
+08A-070	VIII	e. Have you directly or indirectly been obligated on any loan...	17 	1 	
+08A-080	VIII	f. Are you presently delinquent or in default on any Federal debt...	18 	1 	
+08A-090	VIII	g. Are you obligated to pay alimony child support or separate maintenance?	19 	1 	
+08A-100	VIII	h. Is any part of the down payment borrowed?	20 	1 	
+08A-110	VIII	i. Are you a co-maker or endorser on a note?	21 	1 	
+08A-120	VIII	j. Are you a U.S. citizen?    k. Are you a permanent resident alien?	22 	2 	
+08A-130	VIII	l. Do you intend to occupy...	24 	1 	
+08A-140	VIII	m. Have you had an ownership interest...	25 	1 	
+08A-150	VIII	m. (1) What type of property...	26 	1 	
+08A-160	VIII	m. (2) How did you hold title...	27 	2 	
+!NA!			
+08B-010	`	08B	1 	3 	M
+08B-020	VIII	Applicant Social SecurityNumber	4 	9 	
+08B-030	VIII	Declaration Type Code	13 	2 	
+08B-040	VIII	Declaration Explanation	15 	255 	
+!NA!			
+09A-010	`	09A	1 	3 	SA
+09A-020	IX	Applicant Social SecurityNumber	4 	9 	
+09A-030	IX	Signature Date	13 	8 	
+!NA!			
+10A-010	`	10A	1 	3 	S
+10A-020	X	Applicant Social SecurityNumber	4 	9 	
+10A-030	X	I do not wish to furnish this information	13 	1 	
+10A-040	X	Ethnicity	14 	1 	
+10A-050	X	Filler	15 	30 	
+10A-060	X	Sex	45 	1 	
+!NA!			
+10B-010	`	10B	1 	3 	S
+10B-020	X	This application was taken by	4 	1 	
+10B-030	X	Interviewer's Name	5 	60 	
+10B-040	X	Interview Date	65 	8 	
+10B-050	X	Interviewer's Phone Number	73 	10 	
+10B-060	X	Institution Name	83 	35 	
+10B-070	X	Institution Street Address	118 	35 	
+10B-080	X	Institution Street Address 2	153 	35 	
+10B-090	X	Institution City Address	188 	35 	
+10B-100	X	Institution State Code	223 	2 	
+10B-110	X	Institution Zip Code	225 	5 	
+10B-120	X	Institution Zip Code Plus Four	230 	4 	
+!NA!			
+10R-010	`	10R	1 	3 	M
+10R-020	X	Applicant Social SecurityNumber	4 	9 	
+10R-030	X	Race	13 	2 	
+!NA!			
+000-010	`	0 	1 	3 	S
+000-020	`	File Type	4 	3 
+000-030	`	File Version ID	7 	5 	
+!NA!			
+99B-010	FNM	99B	1 	3 	S
+99B-020	FNM	Seller Provided BelowMarket Financing	4 	1 	
+99B-030	FNM	Owner of existing mortgage	5 	2 	
+99B-040	FNM	Property Appraised Value	7 	15 	
+99B-050	FNM	Buydown Rate	22 	7 	
+99B-060	FNM	Actual vs. EstimatedAppraised Value Indicator	29 	2 	
+99B-070	FNM	Appraisal Fieldwork Ordered	31 	3 	
+99B-080	FNM	Appraiser Name	34 	60 	
+99B-090	FNM	Appraiser Company	94 	35 	
+99B-100	FNM	Appraiser License Number	129 	15 	
+99B-110	FNM	Appraiser License State Code	144 	2 	
+!NA!			
+ADS-010	`	ADS	1 	3 	M
+ADS-020	`	Name	4 	35 
+ADS-030	`	Value	39 	50 	
+!NA!			
+SCA-010	Score	SCA	1 	3 	M
+SCA-020	Score	Score ID	4 	3 	
+SCA-030	Score	Score	7 	3 	
+SCA-040	Score	Score Date	10 	8 	
+!NA!			
+000-010	`	0 	1 	3 	S
+000-020	`	File Type	4 	3 	
+000-030	`	File Version ID	7 	5 	
+!NA!			
+LNC-010	LoanCharacteristic	LNC	1 	3 	S
+LNC-020	Loan	Lien Type Code	4 	1 	
+LNC-030	Loan	Loan Documentation TypeCode	5 	1 	
+LNC-040	Loan	Subject Property Type Code	6 	2 	
+LNC-050	Loan	Reserved for future use	8 	2 	
+LNC-060	Loan	Reserved for future use	10 	2 	
+LNC-070	Loan	Reserved for future use	12 	2 	
+LNC-080	Loan	Reserved for future use	14 	2 	
+LNC-090	Loan	Project Classification Code	16 	2 	
+LNC-100	Loan	Negative Amortization LimitPercent	18 	7 
+LNC-110	Loan	Balloon Indicator	25 	1 	
+LNC-120	Loan	Filler	26 	1 	
+LNC-130	Loan	Filler	27 	1 	
+LNC-140	Loan	Homebuyer EducationCompletion Indicator	28 	1 	
+LNC-150	Loan	Maximum Lifetime RateIncrease	29 	7 	
+LNC-160	Loan	Payment Adjustment LifePercent Cap	36 	7 	
+LNC-170	Loan	Payment Adjustment LifeAmount Cap	43 	15 	
+LNC-180	Loan	Will Escrow be Waived?	58 	1 	
+LNC-190	Loan	Scheduled Loan Closing Date	59 	8 	
+LNC-200	Loan	Scheduled First Payment Date	67 	8 	
+LNC-210	Loan	MI Coverage Percent	75 	7 	
+LNC-220	Loan	MI Insurer Code	82 	3 	
+LNC-230	Loan	APR Spread	85 	5 	
+LNC-240	Loan	HOEPA	90 	1 	
+LNC-250	Loan	PreApproval	91 	1 	
+!NA!			
+PID-010	Product	PID	1 	3 	S
+PID-020	Product	Product Description	4 	30 	
+PID-030	Product	Product Code	34 	15 	
+PID-040	Product	Product Plan Number	49 	5 	
+!NA!			
+PCH-010	ProductCharacteristic	PCH	1 	3 	S
+PCH-020	Product Characteristic s	Mortgage Term	4 	3 	
+PCH-030	Product Characteristic s	Assumable Loan Indicator	7 	1 	
+PCH-040	Product Characteristic s	Payment Frequency Code	8 	2 	
+PCH-050	Product Characteristic s	Prepayment Penalty Indicator	10 	1 	
+PCH-060	Product Characteristic s	Prepayment RestrictedIndicator	11 	1 	
+PCH-070	Product Characteristic s	Repayment Type Code	12 	2 	
+!NA!			
+ARM-010	ARM	ARM	1 	3 	S
+ARM-020	ARM	ARM Index Value	4 	7 	
+ARM-030	ARM	Index Type (Index Name)	11 	2 	
+ARM-040	ARM	ARM Index Margin	13 	7 	
+ARM-050	ARM	ARM Qualifying Rate	20 	7 	
+!NA!			
+PAJ-010	PaymentAdjustments	PAJ	1 	3 	M
+PAJ-020	PaymentAdjustment	Payment Adjustment PeriodNumber	4 	4 	
+PAJ-030	PaymentAdjustment	Payment AdjustmentDuration	8 	3 	
+PAJ-040	PaymentAdjustment	Payment AdjustmentFrequency	11 	3 	
+PAJ-050	PaymentAdjustment	Payment Adjustment TypeCode	14 	1 	
+PAJ-060	PaymentAdjustment	Payment Adjustment Percent	15 	7 	
+PAJ-070	PaymentAdjustment	Payment Adjustment Amount	22	15 
+PAJ-080	PaymentAdjustment	Payment Adjustment PercentCap	37 	7 	
+PAJ-090	PaymentAdjustment	Payment Adjustment AmountCap	44 	15 	
+PAJ-100	PaymentAdjustment	Months To First PaymentAdjustment	59 	3 	
+!NA!			
+RAJ-010	Rate	RAJ	1 	3 	M
+RAJ-020	RateAdjustment	Rate Adjustment PeriodNumber	4 	4 	
+RAJ-030	RateAdjustment	Rate Adjustment Duration	8 	3 	
+RAJ-040	RateAdjustment	Rate Adjustment Frequency	11 	3 	
+RAJ-050	RateAdjustment	Rate Adjustment CalculationMethod Code	14 	1 	
+RAJ-060	RateAdjustment	Rate Adjustment Percent	15 	7 	
+RAJ-070	RateAdjustment	Rate Adjustment Cap	22 	7 	
+RAJ-080	RateAdjustment	Months To First RateAdjustment	29 	3 	
+!NA!			
+BUA-010	Buydown	BUA	1 	3 	S
+BUA-020	Buydown	Buydown Frequency	4 	3 	
+BUA-030	Buydown	Buydown Duration	7 	3 	
+BUA-040	Buydown	Increase Rate	10 	7 	
+BUA-050	Buydown	Funding Code	17 	1 	
+BUA-060	Buydown	Buydown Base Date Code	18 	1 	
+BUA-070	Buydown	Buydown Type Indicator(Perm. Or Temp.)	19 	1 	
+!NA!			
+000-010	`	0 	1 	3 	S
+000-020	`	File Type	4 	3 	
+000-030	`	File Version ID	7 	5 	
+!NA!			
+IDA-010	Identification	IDA	1 	3 	S
+IDA-020	Identification	Filler	4 	23 	
+!NA!			
+LEA-010	Lender	LEA	1 	3 	S
+LEA-020	Lender	FHA Lender Identifier	4 	20 	
+LEA-030	Lender	FHA Sponsor Identifier	24 	20 	
+LEA-040	Lender	Filler	44 	23 	
+!NA!			
+GOA-010	Government	GOA	1 	3 	S
+GOA-020	Government	Energy Efficient New Home	4 	1 	
+GOA-030	Government	MCC	5 	15 	
+GOA-040	Government	Seller Concessions	20 	15 	
+GOA-050	Government	Borrower Total Closing CostsFees	35 	15 	
+GOA-060	Government	Borrower Total Closing CostsPoints (%)	50 	7 	
+GOA-070	Government	Seller Total Closing CostsFees	57 	15 	
+GOA-080	Government	Seller Total Closing CostsPoints (%)	72 	7 	
+GOA-090	Government	Other Total Closing CostsFees	79 	15 	
+GOA-100	Government	Other Total Closing CostsPoints (%)	94 	7 	
+GOA-110	Government	Type of Refinance	101 	1 	
+GOA-120	Government	Property County	102 	35 	
+!NA!			
+GOB-010	Government	GOB	1 	3 	S
+GOB-020	Government	Section of the Act	4 	13 	
+GOB-030	Government	Allowable Repairs	17 	15 	
+GOB-040	Government	MIP Upfront (%)	32 	7 	
+GOB-050	Government	MIP Refund Amount	39 	15 	
+GOB-060	Government	First Renewal Rate (%)	54 	7 	
+GOB-070	Government	Reserved for future use (FirstRenewal Rate (Months)).	61 	3 	
+!NA!			
+GOC-010	Government	GOC	1 	3 	S
+GOC-020	Government	CoBorrower Married toPrimary Borrower	4 	1 	
+GOC-030	Government	Entitlement Amount	5 	15 	
+GOC-040	Government	Monthly Maintenance	20 	7 	
+GOC-050	Government	Monthly Utilities	27 	7 	
+GOC-060	Government	Funding Fee (%)	34 	7 	
+!NA!			
+GOD-010	Government	GOD	1 	3 	SA
+GOD-020	Government	Applicant Social SecurityNumber	4 	9 	
+GOD-030	Government	Federal Tax	13 	15 	
+GOD-040	Government	State Tax	28 	15 	
+GOD-050	Government	Local Income Tax	43 	15 	
+GOD-060	Government	Social Security Tax	58 	15 	
+GOD-070	Government	Total Non-Taxable Income -- Primary	73 	15 	
+GOD-080	Government	Total Non-Taxable Income -- Other	88 	15 	
+GOD-090	Government	Total Taxable Income -- Primary	103 	15 	
+GOD-100	Government	Total Taxable Income -- Other	118 	15 	
+!NA!			
+GOE-010	Government	GOE	1 	3 	SA
+GOE-020	Government	Applicant Social SecurityNumber	4 	9 	
+GOE-030	Government	CAIVR #	13 	10 	
+GOE-040	Government	Borrower Credit Rating	23 	3 	
+GOE-050	Government	Bankruptcy < 3 years	26 	3 	
+GOE-060	Government	Foreclosure	29 	3 	
+GOE-070	Government	Credit Report Score Type	32 	1 	
+!NA!			
+000-010	`	0 	1 	3 	S
+000-020	`	File Type	4 	3 	
+000-030	`	File Version ID	7 	5 	
+!NA!			
+LMD-010	Comm	LMD	1 	3 	S					
+LMD-020	CommLending	Metropolitan Statistical Area or County	4 	40 	
+LMD-030	CommLending	Community Lending Product	44 	2 	
+LMD-035	CommLending	Filler Space	46 	38 	
+LMD-040	CommLending	Fannie Neighbors Eligible	84 	1 	
+LMD-050	CommLending	Community Seconds	85 	1 	
+LMD-060	CommLending	HUD Median Income	86 	15 	
+LMD-070	CommLending	Income Limit AdjustmentFactors	101 	15 	
+LMD-080	CommLending	Community Lending IncomeLimit	116 	15 	
+!NA!			
+TT-010	Transaction	‘TT ‘	1 	3 	S
+TT-020	TransactionTrailer	Transaction Control Number	4 	9 	
+!NA!			
+ET-010	Env. Trailer	‘ET ‘	1 	3 	S
+ET-020	Env. Trailer	Envelope Control Number	4 	9 	
+!NA!			
