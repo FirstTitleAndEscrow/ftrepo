@@ -9285,7 +9285,7 @@ order by line_number
 
 
 
-<cfif mid(get_company_info.company,1,3) eq 'GMM'>
+<cfif mid(get_company_info.company,1,3) eq 'GMM' or get_company_info.company contains 'George Mason'>
 
 <!---<cfif arguments.property_state eq 'MD'>
 
@@ -9316,7 +9316,7 @@ where line_number > 1200
 <cfquery dbtype="query" name="fee_detail"> 
 SELECT *
 FROM fees_query
-<!---where payer = 'Buyer'--->
+where payer = 'Buyer'
 order by line_number
 </cfquery>
 
