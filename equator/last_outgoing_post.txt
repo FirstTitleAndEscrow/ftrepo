@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Header>
+		<LoginAccountIdentifier>STEquator</LoginAccountIdentifier>
+		<LoginAccountPassword>STEquator</LoginAccountPassword>
+	</Header>
+	<Body>
+		<Order action="UPDATE" transactionID="716F1FEB-1D00-4FA0-9EE7-3AF7B14507F3">
+			<AcceptReject id="55ABF2B9-0D30-9E3F-978623A7B38CF024">
+				<AcceptReject>ACCEPT</AcceptReject>
+			</AcceptReject>
+		</Order>
+	</Body>
+</Message>
