@@ -14,7 +14,6 @@ select max(customerid) as "custid" from customers
 
 
 
-
 <cfquery name="insertclosing" DATASOURCE="First_Title_Services">
 insert into closing (orderid, customerid, loginid, orderdate, closingtype, closingoption, closingloantype, verifyemail, closingdate, closingtime) values (#orderid#,'#custid#', '#loginid#', '#DateFormat(now())# #TimeFormat(now())#', '#closingtype#', '#closingoption#', '#closingloantype#', '#verifyemail#', '#DateFormat("#closingdate#", "dd-mmm-yyyy")#','#TimeFormat("#closingtime#", "hh:mm tt")#' )
 </cfquery>
