@@ -9316,7 +9316,7 @@ where line_number > 1200
 <cfquery dbtype="query" name="fee_detail"> 
 SELECT *
 FROM fees_query
-where payer = 'Buyer'
+where payer = 'Buyer' 
 order by line_number
 </cfquery>
 
