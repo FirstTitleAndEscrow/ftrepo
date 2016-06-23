@@ -14,7 +14,7 @@ SELECT state FROM taxtable ORDER BY state
 
 <html>
 <head>
-	<title>Untitled</title>
+	<title>Untitled Test</title>
 </head>
 
 <body>
