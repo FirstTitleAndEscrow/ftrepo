@@ -1,0 +1,296 @@
+desc,linenum,desc_new,payee,outside
+Sub Escrow,NEW,SubEscrow Fee,Escrow Company,NO
+Sub escrow fee,NEW,SubEscrow Fee,Escrow Company,NO
+Sub Escrow Fee - CTC,NEW,SubEscrow Fee,Escrow Company,NO
+Subescrow,NEW,SubEscrow Fee,Escrow Company,NO
+Subescrow Fee,NEW,SubEscrow Fee,Escrow Company,NO
+Subescrow Fee - FNAS,NEW,SubEscrow Fee,Escrow Company,NO
+SubEscrow Fee to CTC,NEW,SubEscrow Fee,Escrow Company,NO
+SubEscrow Fee to Escrow Co.,NEW,SubEscrow Fee,Escrow Company,NO
+Sub-escrow/Recon Fee to CTIC,NEW,SubEscrow Fee,Escrow Company,NO
+Policy Fee to St. of TX,NEW,Policy Fee,State of Texas,NO
+TIEFF Fee,NEW,TIEFF Fee,Title Insurer,NO
+ALTA Land Survey,NEW,Survey,Survey Company,NO
+ALTA Survey - Quote,NEW,Survey,Survey Company,NO
+GA Resid. Fee,NEW,GA Resid. Fee,State of Georgia,NO
+Sper. Court Search,NEW,Sup. Court Search,Search Agent,YES
+Sup Ct Search,NEW,Sup. Court Search,Search Agent,YES
+Super Ct Search,NEW,Sup. Court Search,Search Agent,YES
+Super Ct. Search,NEW,Sup. Court Search,Search Agent,YES
+Super. Ct  Search,NEW,Sup. Court Search,Search Agent,YES
+Super. Ct Search,NEW,Sup. Court Search,Search Agent,YES
+Super. Ct. Search,NEW,Sup. Court Search,Search Agent,YES
+Super.Ct. Search,NEW,Sup. Court Search,Search Agent,YES
+Super.Ct. Send,NEW,Sup. Court Search,Search Agent,YES
+Super.Ct.Search,NEW,Sup. Court Search,Search Agent,YES
+Super.ct.send,NEW,Sup. Court Search,Search Agent,YES
+Superior Cour Search,NEW,Sup. Court Search,Search Agent,YES
+Superior Court,NEW,Sup. Court Search,Search Agent,YES
+Superior Court Searc,NEW,Sup. Court Search,Search Agent,YES
+Superior Courts,NEW,Sup. Court Search,Search Agent,YES
+Superior Ct Srch,NEW,Sup. Court Search,Search Agent,YES
+Superior Ct. Searc,NEW,Sup. Court Search,Search Agent,YES
+Superior Ct. Search,NEW,Sup. Court Search,Search Agent,YES
+Superior Curts,NEW,Sup. Court Search,Search Agent,YES
+Escrow Fee - CTC,1109,Escrow Fee,Escrow CTC,NA
+Attorney Closing,1102,Signing Fee,TP Attorney Signer,NA
+Attorney Closing Fee,1102,Signing Fee,TP Attorney Signer,NA
+Attorney Fee,1102,Signing Fee,TP Attorney Signer,NA
+Attorney Fee Signer,1102,Signing Fee,TP Attorney Signer,NA
+Attorney Signing,1102,Signing Fee,TP Attorney Signer,NA
+Attorney Signing Fee,1102,Signing Fee,TP Attorney Signer,NA
+Attorney Signing/Coord,1102,Signing Fee,TP Attorney Signer,NA
+Atty Signing Fee,1102,Signing Fee,TP Attorney Signer,NA
+Closing Attorney Fee,1102,Signing Fee,TP Attorney Signer,NA
+Closing Atty Fee,1102,Signing Fee,TP Attorney Signer,NA
+Doc Signing,1102,Signing Fee,TP Signer,NA
+Loan Sign - Pay NSS,1102,Signing Fee,TP Agent Signer,NA
+Loan Sign Svces,1102,Signing Fee,TP Agent Signer,NA
+Loan Signing,1102,Signing Fee,TP Agent Signer,NA
+Loan Signing Fee,1102,Signing Fee,TP Agent Signer,NA
+Loan Signing Service,1102,Signing Fee,TP Agent Signer,NA
+Loan Signing Service - payable to NSS,1102,Signing Fee,TP Agent Signer,NA
+Loan Signing to NSS,1102,Signing Fee,TP Agent Signer,NA
+Loan Singing,1102,Signing Fee,TP Agent Signer,NA
+Mobile Closing,1102,Signing Fee,TP Agent Signer,NA
+Notary,1102,Signing Fee,TP Agent Signer,NA
+Notary Fee,1102,Signing Fee,TP Agent Signer,NA
+Notary/Signing Fee,1102,Signing Fee,TP Agent Signer,NA
+Offsite Closing,1102,Signing Fee,TP Agent Signer,NA
+Sigining Fee,1102,Signing Fee,TP Agent Signer,NA
+Signing,1102,Signing Fee,TP Agent Signer,NA
+Signing Agent,1102,Signing Fee,TP Agent Signer,NA
+Signing Agent Fee,1102,Signing Fee,TP Agent Signer,NA
+signing agent fee,1102,Signing Fee,TP Agent Signer,NA
+Signing Fee,1102,Signing Fee,TP Agent Signer,NA
+Signing Fee to AIM,1102,Signing Fee,TP Agent Signer,NA
+Signing Service,1102,Signing Fee,TP Agent Signer,NA
+Signing Services,1102,Signing Fee,TP Agent Signer,NA
+Signing/Delivery,1102,Signing Fee,TP Agent Signer,NA
+Signing/Disbursement,1102,Signing Fee,TP Agent Signer,NA
+Singing,1102,Signing Fee,TP Agent Signer,NA
+Witness Fee,1102,Signing Fee,TP Agent Signer,NA
+Witness Signing,1102,Signing Fee,TP Agent Signer,NA
+ALTA 8.1,1101,NA,NA,NA
+ALTA 8.1 (ENVIRO),1101,NA,NA,NA
+ALTA Short Fee,1101,NA,NA,NA
+P.A. Endorsement,1101,NA,NA,NA
+PA 900,1101,NA,NA,NA
+PA 900 (ENVIRO 8),1101,NA,NA,NA
+PA 900 (Enviro 8),1101,NA,NA,NA
+PA 900 (ENVIRO 8.1),1101,NA,NA,NA
+PA 900 (ENVIRO 9),1101,NA,NA,NA
+PA 900 (Enviro),1101,NA,NA,NA
+PA 900 End.,1101,NA,NA,NA
+PA 900 Endoremsent,1101,NA,NA,NA
+PA 900 Endormsent,1101,NA,NA,NA
+PA 900 Endorsement,1101,NA,NA,NA
+PA 900 Enviro,1101,NA,NA,NA
+PA Edorsement,1101,NA,NA,NA
+PA End.,1101,NA,NA,NA
+PA Endorement,1101,NA,NA,NA
+PA Endorse.,1101,NA,NA,NA
+PA Endorsement,1101,NA,NA,NA
+PA Endorsementa,1101,NA,NA,NA
+PA Endorsements,1101,NA,NA,NA
+PA Endorsemet,1101,NA,NA,NA
+PA Endrosements,1101,NA,NA,NA
+PA Enodrsement,1101,NA,NA,NA
+PA. Emd,1101,NA,NA,NA
+PA. Endorsement,1101,NA,NA,NA
+PA.Emd,1101,NA,NA,NA
+PA.End,1101,NA,NA,NA
+S. Form Policy,1101,NA,NA,NA
+Short  Form Policy,1101,NA,NA,NA
+Short Fomr Policy,1101,NA,NA,NA
+Short Form,1101,NA,NA,NA
+Short Form Fee,1101,NA,NA,NA
+Short Form Policy,1101,NA,NA,NA
+Short. Form.Policy,1101,NA,NA,NA
+Short.Form.Policy,1101,NA,NA,NA
+Shortform Policy,1101,NA,NA,NA
+Sort form policy,1101,NA,NA,NA
+Binder,1101,NA,NA,NA
+binder,1101,NA,NA,NA
+Binder / Wire Fee,1101,NA,NA,NA
+Binder Fee/Disburse,1101,NA,NA,NA
+Binder Fee/Wire Fee,1101,NA,NA,NA
+Binder Prep,1101,NA,NA,NA
+closer Pick-up,1101,NA,NA,NA
+Closing Coodination,1101,NA,NA,NA
+Closing Coordination,1101,NA,NA,NA
+Closing Coordination payable to First Title,1101,NA,NA,NA
+Closing Coordination to First Equity Title,1101,NA,NA,NA
+Closing Pick-up fee,1101,NA,NA,NA
+Commitment Fee,1101,NA,NA,NA
+Coord./Proc. Fee to First Title (FTE),1101,NA,NA,NA
+Copies/Judgments,1101,NA,NA,NA
+Couier,1101,NA,NA,NA
+Couier/Delivery,1101,NA,NA,NA
+Courier,1101,NA,NA,NA
+courier,1101,NA,NA,NA
+Courier Fee,1101,NA,NA,NA
+Courier fee,1101,NA,NA,NA
+Courier Fees,1101,NA,NA,NA
+Courier/Delivery,1101,NA,NA,NA
+Courier/Delivery Fee,1101,NA,NA,NA
+Courier/Delviery,1101,NA,NA,NA
+Courier/Overnight,1101,NA,NA,NA
+CPL Fee,1101,NA,NA,NA
+Curative,1101,NA,NA,NA
+Curative Fee,1101,NA,NA,NA
+Curative fee,1101,NA,NA,NA
+Curative Work,1101,NA,NA,NA
+Deed Prep,1101,NA,NA,NA
+Deed Prep.,1101,NA,NA,NA
+Deiv/Courier/Wire,1101,NA,NA,NA
+Del,1101,NA,NA,NA
+Deliv./Overnight,1101,NA,NA,NA
+Deliv/Courier/Wire,1101,NA,NA,NA
+Deliv/Overnight/Wire,1101,NA,NA,NA
+Delivery,1101,NA,NA,NA
+Delivery / Courier,1101,NA,NA,NA
+Delivery / Overnight,1101,NA,NA,NA
+Delivery Cost,1101,NA,NA,NA
+Delivery Fee,1101,NA,NA,NA
+Delivery Fee to FTE,1101,NA,NA,NA
+Delivery Payoff Fee,1101,NA,NA,NA
+Delivery/Copies/Scanning,1101,NA,NA,NA
+Delivery/Courier,1101,NA,NA,NA
+Delivery/Courier Fee,1101,NA,NA,NA
+Delivery/Courier to First Title & Escrow,1101,NA,NA,NA
+Delivery/Fedex,1101,NA,NA,NA
+Delivery/Overnight,1101,NA,NA,NA
+Delivery/UPS,1101,NA,NA,NA
+Deoivery/Courier,1101,NA,NA,NA
+Disb / Proc Releases,1101,NA,NA,NA
+Disb / Procure Relea,1101,NA,NA,NA
+Disburement/Sub-Escrow,1101,NA,NA,NA
+Disbursement,1101,NA,NA,NA
+Disbursement Coord,1101,NA,NA,NA
+Disbursement Coord.,1101,NA,NA,NA
+Disbursement Fee,1101,NA,NA,NA
+Disbursement/Coord,1101,NA,NA,NA
+Disbursement/Coord.,1101,NA,NA,NA
+Disbursement/Coordination,1101,NA,NA,NA
+Disbursement/Escrow,1101,NA,NA,NA
+Disbursement/Payoffs,1101,NA,NA,NA
+Dlivery,1101,NA,NA,NA
+Doc Prep,1101,NA,NA,NA
+DocPrep-Pd to WV Aty,1101,NA,NA,NA
+Document Coordinatio,1101,NA,NA,NA
+Document Prep,1101,NA,NA,NA
+Document Preparation,1101,NA,NA,NA
+Document Preperation,1101,NA,NA,NA
+Document Service Coord. to First Equity Title,1101,NA,NA,NA
+Dsibursement Fee,1101,NA,NA,NA
+Escrow Disbursement,1101,NA,NA,NA
+Escrow Fee,1101,NA,NA,NA
+Exam,1101,NA,NA,NA
+ICL,1101,NA,NA,NA
+Incoming Wire Fee,1101,NA,NA,NA
+Insured Closing Lett,1101,NA,NA,NA
+Jmt Run,1101,NA,NA,NA
+Judgement Run,1101,NA,NA,NA
+Judgement Search,1101,NA,NA,NA
+Judgment Run,1101,NA,NA,NA
+Judgment Runs,1101,NA,NA,NA
+Judgment Search,1101,NA,NA,NA
+Long.Form.Policy,1101,NA,NA,NA
+Overnight Delivery,1101,NA,NA,NA
+Overnight/Courier,1101,NA,NA,NA
+Overnight/Courter,1101,NA,NA,NA
+Overnight/Del./Wire,1101,NA,NA,NA
+Overnight/Del./Wires,1101,NA,NA,NA
+Overnight/Wire/Courier,1101,NA,NA,NA
+Payoff Fee,1101,NA,NA,NA
+Payoff/Disburse,1101,NA,NA,NA
+Postage / Courier,1101,NA,NA,NA
+Prcure & release,1101,NA,NA,NA
+Precouremnt Rleasee,1101,NA,NA,NA
+Preocurement Release,1101,NA,NA,NA
+Procuerment Releases,1101,NA,NA,NA
+Procure,1101,NA,NA,NA
+Procure & Realease,1101,NA,NA,NA
+Procure & Release,1101,NA,NA,NA
+Procure and release,1101,NA,NA,NA
+Procure of Release,1101,NA,NA,NA
+Procure Release,1101,NA,NA,NA
+Procure Release Fee,1101,NA,NA,NA
+Procure Release(s),1101,NA,NA,NA
+Procure Releases,1101,NA,NA,NA
+Procure/Rec Releases,1101,NA,NA,NA
+Procure/Rec.Releases,1101,NA,NA,NA
+Procure/Rec.Rleases,1101,NA,NA,NA
+Procure/Release Fee,1101,NA,NA,NA
+Procure/Sec Releases,1101,NA,NA,NA
+Procurement,1101,NA,NA,NA
+Procurement  Release,1101,NA,NA,NA
+Procurement & Releas,1101,NA,NA,NA
+Procurement of Relea,1101,NA,NA,NA
+Procurement Release,1101,NA,NA,NA
+Procurement Releases,1101,NA,NA,NA
+Procurement Releases Each,1101,NA,NA,NA
+Procurement Releases(s),1101,NA,NA,NA
+Procurement Rleases,1101,NA,NA,NA
+Procurement/Release,1101,NA,NA,NA
+Procurment Releases,1101,NA,NA,NA
+Rec. Service/Procure Releases,1101,NA,NA,NA
+Recording,1101,NA,NA,NA
+Recording Fee,1101,NA,NA,NA
+Recording Prep/Svc,1101,NA,NA,NA
+Recording Serv. Fee,1101,NA,NA,NA
+Recording Servce,1101,NA,NA,NA
+Recording Service,1101,NA,NA,NA
+Recording service,1101,NA,NA,NA
+Recording Service fe,1101,NA,NA,NA
+Recording Service Fee,1101,NA,NA,NA
+Recording Service fee,1101,NA,NA,NA
+Recording Service/Update,1101,NA,NA,NA
+Recording Services,1101,NA,NA,NA
+Recording Svc,1101,NA,NA,NA
+Recording Svc.,1101,NA,NA,NA
+Recording Svc/Prep,1101,NA,NA,NA
+Rel Sch & Track per,1101,NA,NA,NA
+Relea Lien/ Pay Proc,1101,NA,NA,NA
+Releaes/Lien/PO Proc,1101,NA,NA,NA
+Releas Lien/Pay Proc,1101,NA,NA,NA
+Release,1101,NA,NA,NA
+Release Fee,1101,NA,NA,NA
+Release Prep/Per,1101,NA,NA,NA
+Release Prep/per,1101,NA,NA,NA
+Release Prep/Verif.,1101,NA,NA,NA
+Release Processing,1101,NA,NA,NA
+Release Procurement,1101,NA,NA,NA
+Release Procurmenet,1101,NA,NA,NA
+Release Procurment,1101,NA,NA,NA
+Release/Lien/PO Proc,1101,NA,NA,NA
+Release/Lien/Process,1101,NA,NA,NA
+Releases,1101,NA,NA,NA
+Rlease Procurement,1101,NA,NA,NA
+rocure Releases,1101,NA,NA,NA
+rocurement Releases,1101,NA,NA,NA
+Secure Release,1101,NA,NA,NA
+Secure Releases,1101,NA,NA,NA
+Secure/Rec. Releases,1101,NA,NA,NA
+Secure/Record,1101,NA,NA,NA
+Shipping,1101,NA,NA,NA
+Shipping Fee,1101,NA,NA,NA
+Stoarge Iron Mtn,1101,NA,NA,NA
+Storage to Iron Mtn.,1101,NA,NA,NA
+Tax Cert,1101,NA,NA,NA
+Tax Cert.,1101,NA,NA,NA
+Tax Certificate,1101,NA,NA,NA
+Tax Certification,1101,NA,NA,NA
+Tax certification,1101,NA,NA,NA
+Tax Info / Cert,1101,NA,NA,NA
+Tax Info /Cert,1101,NA,NA,NA
+Tax Info/Cert,1101,NA,NA,NA
+Title Clearance,1101,NA,NA,NA
+Title Curative,1101,NA,NA,NA
+Title Resolution,1101,NA,NA,NA
+Title Resolution (if applies),1101,NA,NA,NA
+Title Update Fee,1101,NA,NA,NA
+Wire,1101,NA,NA,NA
+Wire Fee,1101,NA,NA,NA
+Wire Fees,1101,NA,NA,NA

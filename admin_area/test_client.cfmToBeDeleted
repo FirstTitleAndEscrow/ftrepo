@@ -1,0 +1,121 @@
+<CFSET UserFormat = "mm/dd/yyyy">
+<CFIF #ParameterExists(Form.MonthFwd)# is "Yes">
+  <cfif #Month(Form.LastDate)# is 12>
+    <CFSET NewMonth = 1>
+    <CFSET NewYear = #Year(Form.LastDate)#+1>
+    <cfelse>
+    <cfset NewMonth = #Month(Form.LastDate)#+1>
+    <cfset NewYear = #Year(Form.LastDate)#+1>
+  </cfif>
+  <cfset #Days#=#DaysInMonth(CreateDate(NewYear, NewMonth, 1))#>
+  <cfif #Day(Form.LastDate# GT #Days#>
+    <Cfset NewDay = #Days#>
+    <cfelse>
+    <cfset NewDay = #Day(Form.LastDate)#>
+  </cfif>
+  <cfset CurntDate = #DateFormat(CreateDate(NewYear, NewMonth, NewDay),#UserFormat#)#>
+  <cfelseif #ParameterExists(Form.MonthBack)# is "Yes">
+  <cfif #Month(Form.LastDate)# is 1>
+    <cfset NewMonth = 12>
+    <cfset NewYear = #Year(Form.LastDate)#-1>
+    <cfelse>
+    <cfset NewMonth = #Month(Form.LastDate)#-1>
+  </cfif>
+  <cfset NewYear = #Year(Form.LastDate)#>
+</cfif>
+<cfset #Days#=#DaysInMonth(CreateDate(NewYear, NewMonth, 1))#>
+<cfif #Day(Form.LastDate# GT #Days#>
+  <Cfset NewDay = #Days#>
+  <cfelse>
+  <cfset NewDay = #Day(Form.LastDate)#>
+</cfif>
+<cfset CurntDate = #DateFormat(CreateDate(NewYear, NewMonth, NewDay),#UserFormat#)#>
+<cfelseif #ParameterExists(Form.YearFwd)# is "Yes">
+<cfset NewMonth = #Month(Form.LastDate)#>
+<cfset NewYear = #Year(Form.LastDate)#+1>
+<cfif #Month(Form.LastDate)# is 2 and #Day(Form.LastDate)# is 29>
+  <cfset NewDay = 28>
+  <cfelse>
+  <cfset NewDay = #Day(Form.LastDate)#>
+</cfif>
+<cfset CurntDate = #DateFormat(CreateDate(NewYear, NewMonth, NewDay),#UserFormat#)#>
+<cfelseif #ParameterExists(Form.YearBack)# is "Yes">
+<cfset NewMonth = #Month(Form.LastDate)#>
+<cfset NewYear = #Year(Form.LastDate)#-1>
+<cfif #Month(Form.LastDate)# is 2 and #Day(Form.LastDate)# is 29>
+  <cfset NewDay = 28>
+  <cfelse>
+  <cfset NewDay = #Day(Form.LastDate)#>
+</cfif>
+<cfset CurntDate = #DateFormat(CreateDate(NewYear, NewMonth, NewDay),#UserFormat#)#>
+<cfelseif #ParameterExists(GotoUserDate)# is "Yes">
+<cfset CurntDate = #DateFormat(CreateDate(Year(Form.UserDate), Month(Form.UserDate), Day(Form.UserDate)),#UserFormat#)#>
+<cfelseif #ParameterExists(URL.D)# is "Yes">
+<cfif IsDate(#URL.D#)is "No">
+  Invalid URL date parameter. Use your browser's back button to return to the calling page.
+  <cfabort>
+</cfif>
+<cfset CurntDate = #URL.D#>
+<cfelse>
+<cfset CurntDate = #DateFormat(Now(),#UserFormat#)#>
+</cfif>
+<cfset Months = "January,February,March,April,May,June,July,August,September,Octomber,November,December">
+<cfset OffSet = #DayOfWeek(CreateDate(Year(CurntDate),Month(CurntDate),1))#>
+<cfset LastSlot = #OffSet# + #DayInMonth(CurntDate)#-1>
+<Cfset CalWeeks = #Ceiling(LastSlot/7)#>
+<cfset CalDays = #CalWeeks#*7>
+<cfset Day = 1>
+<cfoutput>
+  <form method="post" Action="#URL.template#?D=#CurntDate#">
+  <input type="hidden" name="LastDate" value="#CurntDate#">
+  <input type="hidden" name="UserDate_date" value="You must enter a valid date">
+</cfoutput>
+<table border=1 width="60%"><cols=7>
+  <tr align="center"><cfoutput>
+      <td colspan="7"><strong><font size="6">#DateFormat(CurntDate,"MMMMyyyy")#</font></strong></td>
+    </cfoutput></tr>
+  <tr>
+    <th width="14.287%">Sun</th>
+    <th width="14.287%">Mon</th>
+    <th width="14.287%">Tue</th>
+    <th width="14.287%">Wed</th>
+    <th width="14.287%">Thu</th>
+    <th width="14.287%">Fri</th>
+    <th width="14.287%">Sat</th>
+  </tr>
+  <tr align="center">
+  <cfloop
+	index="ii"
+	from="1"
+	to="#CalDays#">
+    <cfif #ii# gte #Offset# and #ii# lte #Lastslot#>
+      <td><cfoutput>#Day#</cfoutput></td>
+      <cfset Day = #Day# +1>
+      <cfelse>
+      <td></td>
+    </cfif>
+    <cfif (#ii) mod 7 is 0)></tr>
+      <tr align="center"></tr>
+    </cfif>
+  </cfloop>
+  <td><input type="submit" value="&lt;&lt; " Name="YearBack"></td>
+    <td><input type="submit" value="&lt; " Name="MonthBack"></td>
+    <td colspan="3"><cfoutput>Date:
+        <input type="text" Name="UserDate value="#CurntDate#" Size="10" maxlength="10">
+      </cfoutput></td>
+    <td><input type="submit" value=" &gt; " Name="MonthFwd"></td>
+    <td><input type="submit" value=" &gt;&gt; " Name="YearFwd"></td>
+  </tr><tr align="center">
+    <td colspan="7"><input type="submit" value="Go To Date"
+name="GotoUserDate"></td>
+  </tr>
+</table>
+</form>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>Untitled</title>
+</head>
+<body>
+</body>
+</html>

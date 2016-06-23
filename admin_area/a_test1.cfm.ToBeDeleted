@@ -1,0 +1,33 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form>
+
+
+				<TEXTAREA name="a_comments"  COLS=60 ROWS=6
+					style="font-size: 9; 
+					font-family: verdana; 
+					font-style: normal; 
+					color: blue; 
+					background-color: e6e6e6; 
+					border-color: e6e6e6; 
+					border-left-width: thin; 
+					border-right-width: thin; 
+					border-top-width: thin; 
+					border-bottom-width: thin; 
+					border-width: thin; 
+					border-style: bar; 
+					clear: none;">[Buyer 1] [Buyer 2] [Seller 1] [Seller 2] [Payoff Lender 1] [Payoff Lender 2] [Lender 1] [Lender 2]</TEXTAREA>
+
+
+</form>

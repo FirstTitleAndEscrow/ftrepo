@@ -1,0 +1,1405 @@
+<CFPARAM NAME="a_state"     DEFAULT="None">
+<CFPARAM NAME="a_zip"       DEFAULT="None">
+<CFPARAM NAME="a_county"    DEFAULT="None">
+<CFPARAM NAME="a_city"      DEFAULT="None">
+<CFPARAM NAME="a_area_code" DEFAULT="None">
+<CFPARAM NAME="confirm_mon" DEFAULT="">
+<CFPARAM NAME="confirm_mon_to" DEFAULT="">
+<CFPARAM NAME="comfirm_day" DEFAULT="">
+<CFPARAM NAME="comfirm_day_to" DEFAULT="">
+<CFPARAM NAME="confirm_year" DEFAULT="">
+<CFPARAM NAME="confirm_year_to" DEFAULT="">
+<CFPARAM NAME="a_trigger"   DEFAULT="1">
+<CFPARAM NAME="r_count"     DEFAULT="0">
+<CFPARAM NAME="comp_id"     DEFAULT="">
+<CFPARAM NAME="product" DEFAULT="">
+<cfparam name="a_flag" default="1">
+<cfif #comp_id# NEQ "ALL">
+  <cfquery datasource="first_title_main_admin" name="getcompany">
+  select * from companies where id = '#comp_id#'
+  </cfquery>
+  <cfif #a_flag# eq 1>
+    <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_titleid">
+    SELECT title_id FROM Title where comp_id = '#comp_id#' ORDER BY Title_id
+    </CFQUERY>
+  </cfif>
+  <cfif #a_flag# eq 2>
+    <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_titleid">
+    SELECT title_id FROM Title where comp_id = '#comp_id#' and appraisal_status = 'Closing Requested' ORDER BY Title_id
+    </CFQUERY>
+  </cfif>
+  <cfif #a_flag# eq 3>
+    <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_titleid">
+    SELECT title_id FROM Title where comp_id = '#comp_id#' and appraisal_status = 'Closer Assigned' ORDER BY Title_id
+    </CFQUERY>
+  </cfif>
+  <cfif #a_flag# eq 4>
+    <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_titleid">
+    SELECT title_id FROM Title where comp_id = '#comp_id#' and appraisal_status = 'Closing Submitted' ORDER BY Title_id
+    </CFQUERY>
+  </cfif>
+  <cfif #a_flag# eq 5>
+    <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_titleid">
+    SELECT title_id FROM Title where comp_id = '#comp_id#' and appraisal_status = 'Closing Scheduled' ORDER BY Title_id
+    </CFQUERY>
+  </cfif>
+  <cfif #a_flag# eq 6>
+    <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_titleid">
+    SELECT title_id FROM Title where comp_id = '#comp_id#' and appraisal_status = 'Loan Closed' ORDER BY Title_id
+    </CFQUERY>
+  </cfif>
+  <cfelse>
+  <cfif #a_flag# eq 1>
+    <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_titleid">
+    SELECT title_id FROM Title where 0 = 0 ORDER BY Title_id
+    </CFQUERY>
+  </cfif>
+  <cfif #a_flag# eq 2>
+    <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_titleid">
+    SELECT title_id FROM Title where appraisal_status = 'Closing Requested' ORDER BY Title_id
+    </CFQUERY>
+  </cfif>
+  <cfif #a_flag# eq 3>
+    <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_titleid">
+    SELECT title_id FROM Title where appraisal_status = 'Closer Assigned' ORDER BY Title_id
+    </CFQUERY>
+  </cfif>
+  <cfif #a_flag# eq 4>
+    <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_titleid">
+    SELECT title_id FROM Title where appraisal_status = 'Closing Scheduled' ORDER BY Title_id
+    </CFQUERY>
+  </cfif>
+  <cfif #a_flag# eq 5>
+    <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_titleid">
+    SELECT title_id FROM Title where appraisal_status = 'Closing Scheduled' ORDER BY Title_id
+    </CFQUERY>
+  </cfif>
+  <cfif #a_flag# eq 6>
+    <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_titleid">
+    SELECT title_id FROM Title where appraisal_status = 'Loan Closed' ORDER BY Title_id
+    </CFQUERY>
+  </cfif>
+</CFIF>
+<cfquery datasource="first_title_main_admin" name="getuser">
+select * from first_admin where id = #uid#
+</cfquery>
+<CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_state_list">
+SELECT * FROM first_title_states ORDER BY st_abbrev ASC
+</CFQUERY>
+<CFSET a_state_abbrev = ArrayNew(1)>
+<CFSET a_count = "1">
+<CFOUTPUT QUERY="read_state_list">
+  <CFIF #a_count# EQ "1">
+    <CFSET a_state_abbrev[a_count] = "none">
+    <CFELSE>
+    <CFSET a_state_abbrev[a_count] = #st_abbrev#>
+  </CFIF>
+  <CFSET a_count = #a_count# + "1">
+</CFOUTPUT>
+<!--- ===================================================== --->
+<CFIF #a_trigger# EQ "2">
+  <cfoutput>
+    <CFIF IsDefined("form.confirm_mon")>
+      <cfif #confirm_mon# NEQ "Month">
+        <CFSET confirm_mon = #confirm_mon#>
+      </cfif>
+    </CFIF>
+    <CFIF IsDefined("form.order")>
+      <cfif #order# NEQ "NONE">
+        <CFSET order = #order#>
+      </cfif>
+    </CFIF>
+    <CFIF IsDefined("form.comfirm_day")>
+      <cfif #comfirm_day# NEQ "Day">
+        <CFSET comfirm_day = #comfirm_day#>
+      </cfif>
+    </CFIF>
+    <CFIF IsDefined("form.confirm_year")>
+      <cfif #confirm_year# NEQ "Year">
+        <CFSET confirm_year = #confirm_year#>
+      </cfif>
+    </CFIF>
+    <CFIF IsDefined("form.confirm_mon_to")>
+      <cfif #confirm_mon_to# NEQ "Month">
+        <CFSET confirm_mon_to = #confirm_mon_to#>
+      </cfif>
+    </CFIF>
+    <CFIF IsDefined("form.comfirm_day_to")>
+      <cfif #comfirm_day_to# NEQ "Day">
+        <CFSET comfirm_day_to = #comfirm_day_to#>
+      </cfif>
+    </CFIF>
+    <CFIF IsDefined("form.confirm_year_to")>
+      <cfif #confirm_year_to# NEQ "Year">
+        <CFSET confirm_year_to = #confirm_year_to#>
+      </cfif>
+    </CFIF>
+    <CFIF IsDefined("form.product")>
+      <cfif #product# NEQ "">
+        <CFSET product = #product#>
+      </cfif>
+    </CFIF>
+  </cfoutput>
+  <cfif #comp_id# NEQ "ALL">
+    <CFSET zip_id_2 = #ListToArray(comp_id, ",")#>
+    <CFSET cty_name_1 = ArrayNew(1)>
+    <CFLOOP FROM="1" TO="#ArrayLen(zip_id_2)#" INDEX="MMM">
+      <CFSET st_temp = #ListToArray(zip_id_2[MMM], "|")#>
+      <CFSET cty_name_1[MMM] = #st_temp[1]#>
+    </CFLOOP>
+    <CFLOOP FROM="1" TO="#ArrayLen(cty_name_1)#" INDEX="TTT">
+    <cfif #product# eq "Closing Requested">
+      <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_report">
+      SELECT * FROM title a, title_closing_order_request b, eventlist c WHERE a.title_id = b.title_id and a.title_id = c.title_id and appraisal_status = 'Closing Requested'
+      <cfif #comp_id# NEQ "ALL">
+        and a.comp_id = '#cty_name_1[TTT]#'
+      </cfif>
+      <cfif (#confirm_mon# NEQ "Month" and #comfirm_day# NEQ "Day" and #confirm_year# NEQ "Year") and (#confirm_mon_to# NEQ "Month" and #comfirm_day_to# NEQ "Day" and #confirm_year_to# NEQ "Year")>
+        <CFSET YearMon = CreateDate(FORM.confirm_year, FORM.confirm_mon, FORM.comfirm_day)>
+        <CFSET YearMonto = CreateDate(FORM.confirm_year_to, FORM.confirm_mon_to, FORM.comfirm_day_to)>
+        and (request_date between '#DateFormat(YearMon,"m/d/yyyy")#' AND '#DateFormat(YearMonto,"m/d/yyyy")#')
+      </cfif>
+      <CFIF #a_county# NEQ "None">
+        AND a.bfirstname1 LIKE '%#a_county#%'
+      </CFIF>
+      <CFIF #a_zip# NEQ "None">
+        AND a.blastname1 LIKE '%#a_zip#%'
+      </CFIF>
+      <CFIF #order# NEQ "None">
+        AND a.title_id = #order#
+      </CFIF>
+      ORDER BY blastname1 ASC
+      </CFQUERY>
+      <cfelseif #product# eq "Closing Assigned">
+      <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_report">
+      SELECT * FROM title a, title_closing_order_request b, eventlist c WHERE a.title_id = b.title_id and a.title_id = c.title_id and a.appraisal_status = 'Closer Assigned'
+      <cfif #comp_id# NEQ "ALL">
+        and a.comp_id = '#comp_id#'
+      </cfif>
+      <cfif (#confirm_mon# NEQ "Month" and #comfirm_day# NEQ "Day" and #confirm_year# NEQ "Year") and (#confirm_mon_to# NEQ "Month" and #comfirm_day_to# NEQ "Day" and #confirm_year_to# NEQ "Year")>
+        <CFSET YearMon = CreateDate(FORM.confirm_year, FORM.confirm_mon, FORM.comfirm_day)>
+        <CFSET YearMonto = CreateDate(FORM.confirm_year_to, FORM.confirm_mon_to, FORM.comfirm_day_to)>
+        and (yearmonth between '#DateFormat(YearMon,"m/d/yyyy")#' AND '#DateFormat(YearMonto,"m/d/yyyy")#' )
+      </cfif>
+      <CFIF #a_county# NEQ "None">
+        AND a.bfirstname1 LIKE '%#a_county#%'
+      </CFIF>
+      <CFIF #a_zip# NEQ "None">
+        AND a.blastname1 LIKE '%#a_zip#%'
+      </CFIF>
+      <CFIF #order# NEQ "None">
+        AND a.title_id = #order#
+      </CFIF>
+      ORDER BY blastname1 ASC
+      </CFQUERY>
+      <cfelseif #product# eq "Closing Submitted">
+      <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_report">
+      SELECT * FROM title a, title_closing_order_request b, eventlist c WHERE a.title_id = b.title_id and a.title_id = c.title_id and c.s_date is not null and appraisal_status = 'Closing Scheduled'
+      <cfif #comp_id# NEQ "ALL">
+        and a.comp_id = '#comp_id#'
+      </cfif>
+      <cfif (#confirm_mon# NEQ "Month" and #comfirm_day# NEQ "Day" and #confirm_year# NEQ "Year") and (#confirm_mon_to# NEQ "Month" and #comfirm_day_to# NEQ "Day" and #confirm_year_to# NEQ "Year")>
+        <CFSET YearMon = CreateDate(FORM.confirm_year, FORM.confirm_mon, FORM.comfirm_day)>
+        <CFSET YearMonto = CreateDate(FORM.confirm_year_to, FORM.confirm_mon_to, FORM.comfirm_day_to)>
+        and (closing_date between '#DateFormat(YearMon,"m/d/yyyy")#' AND '#DateFormat(YearMonto,"m/d/yyyy")#' )
+      </cfif>
+      <CFIF #a_county# NEQ "None">
+        AND a.bfirstname1 LIKE '%#a_county#%'
+      </CFIF>
+      <CFIF #a_zip# NEQ "None">
+        AND a.blastname1 LIKE '%#a_zip#%'
+      </CFIF>
+      <CFIF #order# NEQ "None">
+        AND a.title_id = #order#
+      </CFIF>
+      ORDER BY blastname1 ASC
+      </CFQUERY>
+      <cfelseif #product# eq "Closing Scheduled">
+      <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_report">
+      SELECT * FROM title a, title_closing_order_request b, eventlist c WHERE a.title_id = b.title_id and a.title_id = c.title_id and appraisal_status = 'Closing Scheduled'
+      <cfif #comp_id# NEQ "ALL">
+        and a.comp_id = '#comp_id#'
+      </cfif>
+      <cfif (#confirm_mon# NEQ "Month" and #comfirm_day# NEQ "Day" and #confirm_year# NEQ "Year") and (#confirm_mon_to# NEQ "Month" and #comfirm_day_to# NEQ "Day" and #confirm_year_to# NEQ "Year")>
+        <CFSET YearMon = CreateDate(FORM.confirm_year, FORM.confirm_mon, FORM.comfirm_day)>
+        <CFSET YearMonto = CreateDate(FORM.confirm_year_to, FORM.confirm_mon_to, FORM.comfirm_day_to)>
+        and (yearmonth between '#DateFormat(YearMon,"m/d/yyyy")#' AND '#DateFormat(YearMonto,"m/d/yyyy")#' )
+      </cfif>
+      <CFIF #a_county# NEQ "None">
+        AND a.bfirstname1 LIKE '%#a_county#%'
+      </CFIF>
+      <CFIF #a_zip# NEQ "None">
+        AND a.blastname1 LIKE '%#a_zip#%'
+      </CFIF>
+      <CFIF #order# NEQ "None">
+        AND a.title_id = #order#
+      </CFIF>
+      ORDER BY blastname1 ASC
+      </CFQUERY>
+      <cfelseif #product# eq "Loan Closed">
+      <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_report">
+      SELECT * FROM title a, title_closing_order_request b, eventlist c WHERE a.title_id = b.title_id and a.title_id = c.title_id and appraisal_status = 'Loan Closed'
+      <cfif #comp_id# NEQ "ALL">
+        and a.comp_id = '#comp_id#'
+      </cfif>
+      <cfif (#confirm_mon# NEQ "Month" and #comfirm_day# NEQ "Day" and #confirm_year# NEQ "Year") and (#confirm_mon_to# NEQ "Month" and #comfirm_day_to# NEQ "Day" and #confirm_year_to# NEQ "Year")>
+        <CFSET YearMon = CreateDate(FORM.confirm_year, FORM.confirm_mon, FORM.comfirm_day)>
+        <CFSET YearMonto = CreateDate(FORM.confirm_year_to, FORM.confirm_mon_to, FORM.comfirm_day_to)>
+        and (yearmonth between '#DateFormat(YearMon,"m/d/yyyy")#' AND '#DateFormat(YearMonto,"m/d/yyyy")#' )
+      </cfif>
+      <CFIF #a_county# NEQ "None">
+        AND a.bfirstname1 LIKE '%#a_county#%'
+      </CFIF>
+      <CFIF #a_zip# NEQ "None">
+        AND a.blastname1 LIKE '%#a_zip#%'
+      </CFIF>
+      <CFIF #order# NEQ "None">
+        AND a.title_id = #order#
+      </CFIF>
+      ORDER BY blastname1 ASC
+      </CFQUERY>
+      <cfelse>
+      <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_report">
+      SELECT * FROM title a, title_closing_order_request b, eventlist c WHERE a.title_id = b.title_id and a.title_id = c.title_id
+      <cfif #comp_id# NEQ "ALL">
+        and a.comp_id = '#comp_id#'
+      </cfif>
+      <cfif (#confirm_mon# NEQ "Month" and #comfirm_day# NEQ "Day" and #confirm_year# NEQ "Year") and (#confirm_mon_to# NEQ "Month" and #comfirm_day_to# NEQ "Day" and #confirm_year_to# NEQ "Year")>
+        <CFSET YearMon = CreateDate(FORM.confirm_year, FORM.confirm_mon, FORM.comfirm_day)>
+        <CFSET YearMonto = CreateDate(FORM.confirm_year_to, FORM.confirm_mon_to, FORM.comfirm_day_to)>
+        and (a.check_date between '#DateFormat(YearMon,"m/d/yyyy")#' AND '#DateFormat(YearMonto,"m/d/yyyy")#')
+      </cfif>
+      <CFIF #a_county# NEQ "None">
+        AND a.bfirstname1 LIKE '%#a_county#%'
+      </CFIF>
+      <CFIF #a_zip# NEQ "None">
+        AND a.blastname1 LIKE '%#a_zip#%'
+      </CFIF>
+      <CFIF #order# NEQ "None">
+        AND a.title_id = #order#
+      </CFIF>
+      ORDER BY a.blastname1 ASC
+      </CFQUERY>
+    </cfif>
+    <cfelse>
+    <cfif #product# eq "Closing Requested">
+      <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_report">
+      SELECT * FROM title a, title_closing_order_request b, eventlist c WHERE a.title_id = b.title_id and a.title_id = c.title_id and appraisal_status = 'Closing Requested'
+      <cfif (#confirm_mon# NEQ "Month" and #comfirm_day# NEQ "Day" and #confirm_year# NEQ "Year") and (#confirm_mon_to# NEQ "Month" and #comfirm_day_to# NEQ "Day" and #confirm_year_to# NEQ "Year")>
+        <CFSET YearMon = CreateDate(FORM.confirm_year, FORM.confirm_mon, FORM.comfirm_day)>
+        <CFSET YearMonto = CreateDate(FORM.confirm_year_to, FORM.confirm_mon_to, FORM.comfirm_day_to)>
+        and (request_date between '#DateFormat(YearMon,"m/d/yyyy")#' AND '#DateFormat(YearMonto,"m/d/yyyy")#')
+      </cfif>
+      <CFIF #a_county# NEQ "None">
+        AND a.bfirstname1 LIKE '%#a_county#%'
+      </CFIF>
+      <CFIF #a_zip# NEQ "None">
+        AND a.blastname1 LIKE '%#a_zip#%'
+      </CFIF>
+      <CFIF #order# NEQ "None">
+        AND a.title_id = #order#
+      </CFIF>
+      ORDER BY blastname1 ASC
+      </CFQUERY>
+      <cfelseif #product# eq "Closing Assigned">
+      <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_report">
+      SELECT * FROM title a, title_closing_order_request b, eventlist c WHERE a.title_id = b.title_id and a.title_id = c.title_id and a.appraisal_status = 'Closer Assigned'
+      <cfif (#confirm_mon# NEQ "Month" and #comfirm_day# NEQ "Day" and #confirm_year# NEQ "Year") and (#confirm_mon_to# NEQ "Month" and #comfirm_day_to# NEQ "Day" and #confirm_year_to# NEQ "Year")>
+        <CFSET YearMon = CreateDate(FORM.confirm_year, FORM.confirm_mon, FORM.comfirm_day)>
+        <CFSET YearMonto = CreateDate(FORM.confirm_year_to, FORM.confirm_mon_to, FORM.comfirm_day_to)>
+        and (yearmonth between '#DateFormat(YearMon,"m/d/yyyy")#' AND '#DateFormat(YearMonto,"m/d/yyyy")#' )
+      </cfif>
+      <CFIF #a_county# NEQ "None">
+        AND a.bfirstname1 LIKE '%#a_county#%'
+      </CFIF>
+      <CFIF #a_zip# NEQ "None">
+        AND a.blastname1 LIKE '%#a_zip#%'
+      </CFIF>
+      <CFIF #order# NEQ "None">
+        AND a.title_id = #order#
+      </CFIF>
+      ORDER BY blastname1 ASC
+      </CFQUERY>
+      <cfelseif #product# eq "Closing Scheduled">
+      <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_report">
+      SELECT * FROM title a, title_closing_order_request b, eventlist c WHERE a.title_id = b.title_id and a.title_id = c.title_id and appraisal_status = 'Closing Scheduled'
+      <cfif (#confirm_mon# NEQ "Month" and #comfirm_day# NEQ "Day" and #confirm_year# NEQ "Year") and (#confirm_mon_to# NEQ "Month" and #comfirm_day_to# NEQ "Day" and #confirm_year_to# NEQ "Year")>
+        <CFSET YearMon = CreateDate(FORM.confirm_year, FORM.confirm_mon, FORM.comfirm_day)>
+        <CFSET YearMonto = CreateDate(FORM.confirm_year_to, FORM.confirm_mon_to, FORM.comfirm_day_to)>
+        and (yearmonth between '#DateFormat(YearMon,"m/d/yyyy")#' AND '#DateFormat(YearMonto,"m/d/yyyy")#' )
+      </cfif>
+      <CFIF #a_county# NEQ "None">
+        AND a.bfirstname1 LIKE '%#a_county#%'
+      </CFIF>
+      <CFIF #a_zip# NEQ "None">
+        AND a.blastname1 LIKE '%#a_zip#%'
+      </CFIF>
+      <CFIF #order# NEQ "None">
+        AND a.title_id = #order#
+      </CFIF>
+      ORDER BY blastname1 ASC
+      </CFQUERY>
+      <cfelseif #product# eq "Closing Submitted">
+      <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_report">
+      SELECT * FROM title a, title_closing_order_request b, eventlist c WHERE a.title_id = b.title_id and a.title_id = c.title_id and c.closing_date is not null and appraisal_status = 'Closing Scheduled'
+      <cfif (#confirm_mon# NEQ "Month" and #comfirm_day# NEQ "Day" and #confirm_year# NEQ "Year") and (#confirm_mon_to# NEQ "Month" and #comfirm_day_to# NEQ "Day" and #confirm_year_to# NEQ "Year")>
+        <CFSET YearMon = CreateDate(FORM.confirm_year, FORM.confirm_mon, FORM.comfirm_day)>
+        <CFSET YearMonto = CreateDate(FORM.confirm_year_to, FORM.confirm_mon_to, FORM.comfirm_day_to)>
+        and (closing_date between '#DateFormat(YearMon,"m/d/yyyy")#' AND '#DateFormat(YearMonto,"m/d/yyyy")#' )
+      </cfif>
+      <CFIF #a_county# NEQ "None">
+        AND a.bfirstname1 LIKE '%#a_county#%'
+      </CFIF>
+      <CFIF #a_zip# NEQ "None">
+        AND a.blastname1 LIKE '%#a_zip#%'
+      </CFIF>
+      <CFIF #order# NEQ "None">
+        AND a.title_id = #order#
+      </CFIF>
+      ORDER BY blastname1 ASC
+      </CFQUERY>
+      <cfelseif #product# eq "Loan Closed">
+      <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_report">
+      SELECT * FROM title a, title_closing_order_request b, eventlist c WHERE a.title_id = b.title_id and a.title_id = c.title_id and appraisal_status = 'Loan Closed'
+      <cfif (#confirm_mon# NEQ "Month" and #comfirm_day# NEQ "Day" and #confirm_year# NEQ "Year") and (#confirm_mon_to# NEQ "Month" and #comfirm_day_to# NEQ "Day" and #confirm_year_to# NEQ "Year")>
+        <CFSET YearMon = CreateDate(FORM.confirm_year, FORM.confirm_mon, FORM.comfirm_day)>
+        <CFSET YearMonto = CreateDate(FORM.confirm_year_to, FORM.confirm_mon_to, FORM.comfirm_day_to)>
+        and (yearmonth between '#DateFormat(YearMon,"m/d/yyyy")#' AND '#DateFormat(YearMonto,"m/d/yyyy")#' )
+      </cfif>
+      <CFIF #a_county# NEQ "None">
+        AND a.bfirstname1 LIKE '%#a_county#%'
+      </CFIF>
+      <CFIF #a_zip# NEQ "None">
+        AND a.blastname1 LIKE '%#a_zip#%'
+      </CFIF>
+      <CFIF #order# NEQ "None">
+        AND a.title_id = #order#
+      </CFIF>
+      ORDER BY blastname1 ASC
+      </CFQUERY>
+      <cfelse>
+      <CFQUERY DATASOURCE="First_Title_Main_Admin" NAME="read_report">
+      SELECT * FROM title a, title_closing_order_request b, eventlist c WHERE a.title_id = b.title_id and a.title_id = c.title_id
+      <cfif (#confirm_mon# NEQ "Month" and #comfirm_day# NEQ "Day" and #confirm_year# NEQ "Year") and (#confirm_mon_to# NEQ "Month" and #comfirm_day_to# NEQ "Day" and #confirm_year_to# NEQ "Year")>
+        <CFSET YearMon = CreateDate(FORM.confirm_year, FORM.confirm_mon, FORM.comfirm_day)>
+        <CFSET YearMonto = CreateDate(FORM.confirm_year_to, FORM.confirm_mon_to, FORM.comfirm_day_to)>
+        and (a.check_date between '#DateFormat(YearMon,"m/d/yyyy")#' AND '#DateFormat(YearMonto,"m/d/yyyy")#')
+      </cfif>
+      <CFIF #a_county# NEQ "None">
+        AND a.bfirstname1 LIKE '%#a_county#%'
+      </CFIF>
+      <CFIF #a_zip# NEQ "None">
+        AND a.blastname1 LIKE '%#a_zip#%'
+      </CFIF>
+      <CFIF #order# NEQ "None">
+        AND a.title_id = #order#
+      </CFIF>
+      ORDER BY a.blastname1 ASC
+      </CFQUERY>
+    </cfif>
+  </cfif>
+  <CFSET r_count = #read_report.recordcount#>
+</CFIF>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>1st Title&Escrow, Inc. - Closing Search Form</title>
+<script type="text/javascript">
+function monthresult() {
+var frm;
+frm = document.frm;
+
+
+if (frm.confirm_mon.value != 'Month') {
+
+  frm.confirm_mon_to.value = frm.confirm_mon.options[frm.confirm_mon.selectedIndex].value;
+
+}
+
+
+}
+
+</script>
+<script type="text/javascript">
+function dayresult() {
+var frm;
+frm = document.frm;
+if (frm.comfirm_day.value != 'Day') {
+ frm.comfirm_day_to.value = frm.comfirm_day.options[frm.comfirm_day.selectedIndex].value;
+}
+}
+</script>
+<script type="text/javascript">
+function yearresult() {
+var frm;
+frm = document.frm;
+if (frm.confirm_year.value != 'Year') {
+
+frm.confirm_year_to.value = frm.confirm_year.options[frm.confirm_year.selectedIndex].value;
+}
+}
+
+</script>
+<script type="text/javascript">
+function prodSelect() {
+var frm;
+frm = document.frm;
+
+
+if (frm.product.value == 'All') {
+location.href="http://www.firsttitleservices.com/admin_area/calendar_search.cfm?uid=<cfoutput>#url.uid#</cfoutput>&al=<cfoutput>#url.al#</cfoutput>&a_flag=1&comp_id=<cfoutput>#comp_id#</cfoutput>";
+
+}
+if (frm.product.value == 'Closing Requested') {
+location.href="http://www.firsttitleservices.com/admin_area/calendar_search.cfm?uid=<cfoutput>#url.uid#</cfoutput>&al=<cfoutput>#url.al#</cfoutput>&a_flag=2&comp_id=<cfoutput>#comp_id#</cfoutput>";
+
+}
+if (frm.product.value == 'Closing Assigned') {
+location.href="http://www.firsttitleservices.com/admin_area/calendar_search.cfm?uid=<cfoutput>#url.uid#</cfoutput>&al=<cfoutput>#url.al#</cfoutput>&a_flag=3&comp_id=<cfoutput>#comp_id#</cfoutput>";
+
+}
+if (frm.product.value == 'Closing Submitted') {
+location.href="http://www.firsttitleservices.com/admin_area/calendar_search.cfm?uid=<cfoutput>#url.uid#</cfoutput>&al=<cfoutput>#url.al#</cfoutput>&a_flag=4&comp_id=<cfoutput>#comp_id#</cfoutput>";
+
+}
+if (frm.product.value == 'Closing Scheduled') {
+location.href="http://www.firsttitleservices.com/admin_area/calendar_search.cfm?uid=<cfoutput>#url.uid#</cfoutput>&al=<cfoutput>#url.al#</cfoutput>&a_flag=5&comp_id=<cfoutput>#comp_id#</cfoutput>";
+
+}
+if (frm.product.value == 'Loan Closed') {
+location.href="http://www.firsttitleservices.com/admin_area/calendar_search.cfm?uid=<cfoutput>#url.uid#</cfoutput>&al=<cfoutput>#url.al#</cfoutput>&a_flag=6&comp_id=<cfoutput>#comp_id#</cfoutput>";
+
+}
+}
+</script>
+</head>
+<BODY BGCOLOR="FFFFFF" TEXT="000000" LINK="FF0000" VLINK="800000" ALINK="FF00FF" BACKGROUND="?"  TopMargin=0 LeftMargin=0 MarginWidth=0 MarginHeight=0>
+<CENTER>
+<CENTER>
+<table width="98%" cellpadding=1 cellspacing=1 border=0 bgcolor=white>
+<tr>
+  <td width="98%" align=center valign=top><table width="98%" cellpadding=1 cellspacing=1 border=0 bgcolor=white>
+      <tr>
+        <td width="98%" align=center valign=top bgcolor=white><cfoutput>
+            <table width="100%" bgcolor="white">
+              <tr>
+                <td></td>
+                <td><div align="center"> <font color = "blue" size="3"><b>User logged in: #getuser.fname#&nbsp;#getuser.lname#
+                    <cfif #comp_id# NEQ "ALL">
+                      -- Company selected: #getcompany.company#
+                    </cfif>
+                    </b></font> </div></td>
+              </tr>
+            </table>
+          </cfoutput>
+          <!--- =================================== --->
+          <!--- ===/    [ CLIENT INFO ]  TOP   \=== --->
+          <!--- =================================== --->
+          <table width="100%" cellpadding=1 cellspacing=1 border=0 bgcolor=white>
+            <tr>
+              <td width="100%" align=left valign=top bgcolor=f1f1f1><FONT FACE=ARIAL SIZE=2 color="black">
+                <CENTER>
+                  <B>Status</B>
+                </CENTER></TD>
+            </TR>
+            <cfif #comp_id# NEQ "ALL">
+              <CFFORM NAME="frm" ACTION="./calendar_search.cfm?uid=#getuser.id#&al=#URL.al#&comp_id=#comp_id#&a_trigger=2" METHOD=POST>
+                <cfquery datasource="first_title_main_admin" name="getuser">
+                select * from first_admin where id = #uid#
+                </cfquery>
+                <tr>
+                  <td width="100%" align=left valign=top bgcolor=elelel><FONT FACE=ARIAL SIZE=2 color="black">
+                    <CENTER>
+                      <select name="product" onchange="prodSelect()"
+		size="1" 
+											style="font-size: 9; 
+											font-family: verdana; 
+											font-style: normal; 
+											color: 003F1E; 
+											background-color: E4E3E3; 
+											border-color: white; 
+											border-left-width: thin; 
+											border-right-width: thin; 
+											border-top-width: thin; 
+											border-bottom-width: thin; 
+											border-width: thin; 
+											border-style: bar; 
+											clear: none; 
+											float: none;" 
+											rows="3" 
+											cols="45" 
+											>
+                        <cfif #a_flag# eq "1">
+                          <OPTION VALUE="All" selected>All</OPTION>
+                          <OPTION VALUE="Closing Requested">Closing Requested</OPTION>
+                          <OPTION VALUE="Closing Assigned">Closing Assigned</OPTION>
+                          <OPTION VALUE="Closing Submitted">Closing Submitted</OPTION>
+                          <OPTION VALUE="Closing Scheduled">Closing Scheduled</OPTION>
+                          <OPTION VALUE="Loan Closed">Loan Closed</OPTION>
+                          <cfelseif #a_flag# eq "2">
+                          <OPTION VALUE="Closing Requested" selected>Closing Requested</OPTION>
+                          <OPTION VALUE="All">All</OPTION>
+                          <OPTION VALUE="Closing Assigned">Closing Assigned</OPTION>
+                          <OPTION VALUE="Closing Submitted">Closing Submitted</OPTION>
+                          <OPTION VALUE="Closing Scheduled">Closing Scheduled</OPTION>
+                          <OPTION VALUE="Loan Closed">Loan Closed</OPTION>
+                          <cfelseif #a_flag# eq "3">
+                          <OPTION VALUE="Closing Assigned" selected>Closing Assigned</OPTION>
+                          <OPTION VALUE="All">All</OPTION>
+                          <OPTION VALUE="Closing Requested">Closing Requested</OPTION>
+                          <OPTION VALUE="Closing Submitted">Closing Submitted</OPTION>
+                          <OPTION VALUE="Closing Scheduled">Closing Scheduled</OPTION>
+                          <OPTION VALUE="Loan Closed">Loan Closed</OPTION>
+                          <cfelseif #a_flag# eq "4">
+                          <OPTION VALUE="Closing Submitted" selected>Closing Submitted</OPTION>
+                          <OPTION VALUE="All">All</OPTION>
+                          <OPTION VALUE="Closing Requested">Closing Requested</OPTION>
+                          <OPTION VALUE="Closing Assigned">Closing Assigned</OPTION>
+                          <OPTION VALUE="Closing Scheduled">Closing Scheduled</OPTION>
+                          <OPTION VALUE="Loan Closed">Loan Closed</OPTION>
+                          <cfelseif #a_flag# eq "5">
+                          <OPTION VALUE="Closing Scheduled" selected>Closing Scheduled</OPTION>
+                          <OPTION VALUE="All">All</OPTION>
+                          <OPTION VALUE="Closing Requested">Closing Requested</OPTION>
+                          <OPTION VALUE="Closing Assigned">Closing Assigned</OPTION>
+                          <OPTION VALUE="Closing Submitted">Closing Submitted</OPTION>
+                          <OPTION VALUE="Loan Closed">Loan Closed</OPTION>
+                          <cfelse>
+                          <OPTION VALUE="Loan Closed" selected>Loan Closed</OPTION>
+                          <OPTION VALUE="All">All</OPTION>
+                          <OPTION VALUE="Closing Requested">Closing Requested</OPTION>
+                          <OPTION VALUE="Closing Assigned">Closing Assigned</OPTION>
+                          <OPTION VALUE="Closing Submitted">Closing Submitted</OPTION>
+                          <OPTION VALUE="Closing Scheduled">Closing Scheduled</OPTION>
+                        </cfif>
+                      </select>
+                    </CENTER></TD>
+                </TR>
+                <tr>
+                
+                <td width="100%" align=center valign=top bgcolor=d3d3d3>
+                
+                <table width="100%" cellpadding=1 cellspacing=1 border=0>
+                  <tr>
+                    <td bgcolor=d3d3d3 width="100%" align=center valign=top><FONT FACE=verdana SIZE=1 color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <FONT FACE=verdana SIZE=1 color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <FONT FACE=verdana SIZE=1 color="black">Order Number </td>
+                  </tr>
+                  <tr>
+                    <td bgcolor=d3d3d3 width="100%" align=center valign=top><INPUT TYPE=TEXT NAME="a_county" VALUE="none" MaxLength=50 Size=16
+									style="font-size: 9; 
+									font-family: verdana; 
+									font-style: normal; 
+									color: 003F1E; 
+									background-color: E4E3E3; 
+									border-color: white; 
+									border-left-width: thin; 
+									border-right-width: thin; 
+									border-top-width: thin; 
+									border-bottom-width: thin; 
+									border-width: thin; 
+									border-style: bar; 
+									clear: none;" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <INPUT TYPE=TEXT NAME="a_zip" VALUE="none" MaxLength=50 Size=16
+									style="font-size: 9; 
+									font-family: verdana; 
+									font-style: normal; 
+									color: 003F1E; 
+									background-color: E4E3E3; 
+									border-color: white; 
+									border-left-width: thin; 
+									border-right-width: thin; 
+									border-top-width: thin; 
+									border-bottom-width: thin; 
+									border-width: thin; 
+									border-style: bar; 
+									clear: none;" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <select name="order"
+		
+											size="1" 
+											style="font-size: 9; 
+											font-family: verdana; 
+											font-style: normal; 
+											color: 003F1E; 
+											background-color: E4E3E3; 
+											border-color: white; 
+											border-left-width: thin; 
+											border-right-width: thin; 
+											border-top-width: thin; 
+											border-bottom-width: thin; 
+											border-width: thin; 
+											border-style: bar; 
+											clear: none; 
+											float: none;" 
+											rows="3" 
+											cols="45" 
+											>
+                        <OPTION VALUE="NONE">N/A</OPTION>
+                        <CFOUTPUT QUERY="read_titleid">
+                          <OPTION VALUE="#Title_ID#">#Title_ID#</OPTION>
+                        </CFOUTPUT>
+                      </SELECT>
+                    </td>
+                  </tr>
+                </table>
+                <table width="100%" cellpadding=1 cellspacing=1 border=0>
+                  <TR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>FROM</b>
+                    <select name="confirm_mon" onchange="monthresult()"
+		
+											size="1" 
+											style="font-size: 9; 
+											font-family: verdana; 
+											font-style: normal; 
+											color: 003F1E; 
+											background-color: E4E3E3; 
+											border-color: white; 
+											border-left-width: thin; 
+											border-right-width: thin; 
+											border-top-width: thin; 
+											border-bottom-width: thin; 
+											border-width: thin; 
+											border-style: bar; 
+											clear: none; 
+											float: none;" 
+											rows="3" 
+											cols="45" 
+											>
+                      <option value="Month">Month</option>
+                      <option value="01">January</option>
+                      <option value="02">February</option>
+                      <option value="03">March</option>
+                      <option value="04">April</option>
+                      <option value="05">May</option>
+                      <option value="06">June</option>
+                      <option value="07">July</option>
+                      <option value="08">August</option>
+                      <option value="09">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                    </select>
+                    <select name="comfirm_day" onchange="dayresult()"
+size="1" 
+											style="font-size: 9; 
+											font-family: verdana; 
+											font-style: normal; 
+											color: 003F1E; 
+											background-color: E4E3E3; 
+											border-color: white; 
+											border-left-width: thin; 
+											border-right-width: thin; 
+											border-top-width: thin; 
+											border-bottom-width: thin; 
+											border-width: thin; 
+											border-style: bar; 
+											clear: none; 
+											float: none;" 
+											rows="3" 
+											cols="45" 
+											>
+                      <OPTION VALUE="Day">Day</OPTION>
+                      <OPTION VALUE="01">01</OPTION>
+                      <OPTION VALUE="02">02</OPTION>
+                      <OPTION VALUE="03">03</OPTION>
+                      <OPTION VALUE="04">04</OPTION>
+                      <OPTION VALUE="05">05</OPTION>
+                      <OPTION VALUE="06">06</OPTION>
+                      <OPTION VALUE="07">07</OPTION>
+                      <OPTION VALUE="08">08</OPTION>
+                      <OPTION VALUE="09">09</OPTION>
+                      <OPTION VALUE="10">10</OPTION>
+                      <OPTION VALUE="11">11</OPTION>
+                      <OPTION VALUE="12">12</OPTION>
+                      <OPTION VALUE="13">13</OPTION>
+                      <OPTION VALUE="14">14</OPTION>
+                      <OPTION VALUE="15">15</OPTION>
+                      <OPTION VALUE="16">16</OPTION>
+                      <OPTION VALUE="17">17</OPTION>
+                      <OPTION VALUE="18">18</OPTION>
+                      <OPTION VALUE="19">19</OPTION>
+                      <OPTION VALUE="20">20</OPTION>
+                      <OPTION VALUE="21">21</OPTION>
+                      <OPTION VALUE="22">22</OPTION>
+                      <OPTION VALUE="23">23</OPTION>
+                      <OPTION VALUE="24">24</OPTION>
+                      <OPTION VALUE="25">25</OPTION>
+                      <OPTION VALUE="26">26</OPTION>
+                      <OPTION VALUE="27">27</OPTION>
+                      <OPTION VALUE="28">28</OPTION>
+                      <OPTION VALUE="29">29</OPTION>
+                      <OPTION VALUE="30">30</OPTION>
+                      <OPTION VALUE="31">31</OPTION>
+                    </select>
+                    <select name="confirm_year" onchange="yearresult()"
+size="1" 
+											style="font-size: 9; 
+											font-family: verdana; 
+											font-style: normal; 
+											color: 003F1E; 
+											background-color: E4E3E3; 
+											border-color: white; 
+											border-left-width: thin; 
+											border-right-width: thin; 
+											border-top-width: thin; 
+											border-bottom-width: thin; 
+											border-width: thin; 
+											border-style: bar; 
+											clear: none; 
+											float: none;" 
+											rows="3" 
+											cols="45" 
+											>
+                      <option value="Year">Year</option>
+                      <option value="2000">2000</option>
+                      <option value="2001">2001</option>
+                      <option value="2002">2002</option>
+                      <option value="2003">2003</option>
+                      <option value="2004">2004</option>
+                      <option value="2005">2005</option>
+                      <option value="2006">2006</option>
+                      <option value="2007">2007</option>
+                      <option value="2008">2008</option>
+                      <option value="2009">2009</option>
+                      <option value="2010">2010</option>
+                    </select>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>TO</b>
+                    <select name="confirm_mon_to"
+		size="1" 
+											style="font-size: 9; 
+											font-family: verdana; 
+											font-style: normal; 
+											color: 003F1E; 
+											background-color: E4E3E3; 
+											border-color: white; 
+											border-left-width: thin; 
+											border-right-width: thin; 
+											border-top-width: thin; 
+											border-bottom-width: thin; 
+											border-width: thin; 
+											border-style: bar; 
+											clear: none; 
+											float: none;" 
+											rows="3" 
+											cols="45" 
+											>
+                      <option value="Month">Month</option>
+                      <option value="01">January</option>
+                      <option value="02">February</option>
+                      <option value="03">March</option>
+                      <option value="04">April</option>
+                      <option value="05">May</option>
+                      <option value="06">June</option>
+                      <option value="07">July</option>
+                      <option value="08">August</option>
+                      <option value="09">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                    </select>
+                    <select name="comfirm_day_to"
+size="1" 
+											style="font-size: 9; 
+											font-family: verdana; 
+											font-style: normal; 
+											color: 003F1E; 
+											background-color: E4E3E3; 
+											border-color: white; 
+											border-left-width: thin; 
+											border-right-width: thin; 
+											border-top-width: thin; 
+											border-bottom-width: thin; 
+											border-width: thin; 
+											border-style: bar; 
+											clear: none; 
+											float: none;" 
+											rows="3" 
+											cols="45" 
+											>
+                      <OPTION VALUE="Day">Day</OPTION>
+                      <OPTION VALUE="01">01</OPTION>
+                      <OPTION VALUE="02">02</OPTION>
+                      <OPTION VALUE="03">03</OPTION>
+                      <OPTION VALUE="04">04</OPTION>
+                      <OPTION VALUE="05">05</OPTION>
+                      <OPTION VALUE="06">06</OPTION>
+                      <OPTION VALUE="07">07</OPTION>
+                      <OPTION VALUE="08">08</OPTION>
+                      <OPTION VALUE="09">09</OPTION>
+                      <OPTION VALUE="10">10</OPTION>
+                      <OPTION VALUE="11">11</OPTION>
+                      <OPTION VALUE="12">12</OPTION>
+                      <OPTION VALUE="13">13</OPTION>
+                      <OPTION VALUE="14">14</OPTION>
+                      <OPTION VALUE="15">15</OPTION>
+                      <OPTION VALUE="16">16</OPTION>
+                      <OPTION VALUE="17">17</OPTION>
+                      <OPTION VALUE="18">18</OPTION>
+                      <OPTION VALUE="19">19</OPTION>
+                      <OPTION VALUE="20">20</OPTION>
+                      <OPTION VALUE="21">21</OPTION>
+                      <OPTION VALUE="22">22</OPTION>
+                      <OPTION VALUE="23">23</OPTION>
+                      <OPTION VALUE="24">24</OPTION>
+                      <OPTION VALUE="25">25</OPTION>
+                      <OPTION VALUE="26">26</OPTION>
+                      <OPTION VALUE="27">27</OPTION>
+                      <OPTION VALUE="28">28</OPTION>
+                      <OPTION VALUE="29">29</OPTION>
+                      <OPTION VALUE="30">30</OPTION>
+                      <OPTION VALUE="31">31</OPTION>
+                    </select>
+                    <select name="confirm_year_to"
+size="1" 
+											style="font-size: 9; 
+											font-family: verdana; 
+											font-style: normal; 
+											color: 003F1E; 
+											background-color: E4E3E3; 
+											border-color: white; 
+											border-left-width: thin; 
+											border-right-width: thin; 
+											border-top-width: thin; 
+											border-bottom-width: thin; 
+											border-width: thin; 
+											border-style: bar; 
+											clear: none; 
+											float: none;" 
+											rows="3" 
+											cols="45" 
+											>
+                      <option value="Year">Year</option>
+                      <option value="2000">2000</option>
+                      <option value="2001">2001</option>
+                      <option value="2002">2002</option>
+                      <option value="2003">2003</option>
+                      <option value="2004">2004</option>
+                      <option value="2005">2005</option>
+                      <option value="2006">2006</option>
+                      <option value="2007">2007</option>
+                      <option value="2008">2008</option>
+                      <option value="2009">2009</option>
+                      <option value="2010">2010</option>
+                    </select>
+                  </tr>
+                  <tr>
+                    <td bgcolor=d3d3d3 width="90%" align=right valign=top><INPUT TYPE=image src="./images/button_search.gif" border=0>
+                    </td>
+                  </tr>
+                  <CFIF #r_count# NEQ "0">
+                    <CFOUTPUT>
+                      <tr>
+                        <td bgcolor=white width=100 align=center valign=top><FONT FACE=verdana SIZE=1 color="blue">
+                          <CFIF #a_County# NEQ "None">
+                            <B>#a_County#</B>
+                          </CFIF>
+                        </td>
+                        <td bgcolor=white width=90 align=center valign=top><FONT FACE=verdana SIZE=1 color="blue">
+                          <CFIF #a_zip# NEQ "None">
+                            <B>#a_zip#</B>
+                          </CFIF>
+                        </td>
+                        <td bgcolor=white width=68 align=center valign=top><FONT FACE=verdana SIZE=1 color="blue">&nbsp; </td>
+                      </tr>
+                      <tr bgcolor=white>
+                        <td bgcolor=white colspan=6 width="98%" align=center valign=top><table width="98%" cellpadding=1 cellspacing=1 border=0 bgcolor=white>
+                            <tr>
+                              <td width="98%" align=center valign=top bgcolor=white><FONT FACE=verdana SIZE=1 color="blue"> <NOBR>Listings from Search = &nbsp;<B>#r_count#</B></NOBR> </td>
+                            </tr>
+                          </TABLE></td>
+                      </tr>
+                    </CFOUTPUT>
+                  </CFIF>
+                </table>
+              </CFFORM>
+              <cfelse>
+              <cfFORM NAME="frm" ACTION="./calendar_search.cfm?uid=#getuser.id#&al=#URL.al#&comp_id=#comp_id#&a_trigger=2" METHOD=POST>
+                <tr>
+                  <td width="100%" align=left valign=top bgcolor=elelel><FONT FACE=ARIAL SIZE=2 color="black">
+                    <CENTER>
+                      <select name="product" onchange="prodSelect()"
+		size="1" 
+											style="font-size: 9; 
+											font-family: verdana; 
+											font-style: normal; 
+											color: 003F1E; 
+											background-color: E4E3E3; 
+											border-color: white; 
+											border-left-width: thin; 
+											border-right-width: thin; 
+											border-top-width: thin; 
+											border-bottom-width: thin; 
+											border-width: thin; 
+											border-style: bar; 
+											clear: none; 
+											float: none;" 
+											rows="3" 
+											cols="45" 
+											>
+                        <cfif #a_flag# eq "1">
+                          <OPTION VALUE="All" selected>All</OPTION>
+                          <OPTION VALUE="Closing Requested">Closing Requested</OPTION>
+                          <OPTION VALUE="Closing Assigned">Closing Assigned</OPTION>
+                          <OPTION VALUE="Closing Submitted">Closing Submitted</OPTION>
+                          <OPTION VALUE="Closing Scheduled">Closing Scheduled</OPTION>
+                          <OPTION VALUE="Loan Closed">Loan Closed</OPTION>
+                          <cfelseif #a_flag# eq "2">
+                          <OPTION VALUE="Closing Requested" selected>Closing Requested</OPTION>
+                          <OPTION VALUE="All">All</OPTION>
+                          <OPTION VALUE="Closing Assigned">Closing Assigned</OPTION>
+                          <OPTION VALUE="Closing Submitted">Closing Submitted</OPTION>
+                          <OPTION VALUE="Closing Scheduled">Closing Scheduled</OPTION>
+                          <OPTION VALUE="Loan Closed">Loan Closed</OPTION>
+                          <cfelseif #a_flag# eq "3">
+                          <OPTION VALUE="Closing Assigned" selected>Closing Assigned</OPTION>
+                          <OPTION VALUE="All">All</OPTION>
+                          <OPTION VALUE="Closing Requested">Closing Requested</OPTION>
+                          <OPTION VALUE="Closing Submitted">Closing Submitted</OPTION>
+                          <OPTION VALUE="Closing Scheduled">Closing Scheduled</OPTION>
+                          <OPTION VALUE="Loan Closed">Loan Closed</OPTION>
+                          <cfelseif #a_flag# eq "4">
+                          <OPTION VALUE="Closing Submitted" selected>Closing Submitted</OPTION>
+                          <OPTION VALUE="All">All</OPTION>
+                          <OPTION VALUE="Closing Requested">Closing Requested</OPTION>
+                          <OPTION VALUE="Closing Assigned">Closing Assigned</OPTION>
+                          <OPTION VALUE="Closing Scheduled">Closing Scheduled</OPTION>
+                          <OPTION VALUE="Loan Closed">Loan Closed</OPTION>
+                          <cfelseif #a_flag# eq "5">
+                          <OPTION VALUE="Closing Scheduled" selected>Closing Scheduled</OPTION>
+                          <OPTION VALUE="All">All</OPTION>
+                          <OPTION VALUE="Closing Requested">Closing Requested</OPTION>
+                          <OPTION VALUE="Closing Assigned">Closing Assigned</OPTION>
+                          <OPTION VALUE="Closing Submitted">Closing Submitted</OPTION>
+                          <OPTION VALUE="Loan Closed">Loan Closed</OPTION>
+                          <cfelse>
+                          <OPTION VALUE="Loan Closed" selected>Loan Closed</OPTION>
+                          <OPTION VALUE="All">All</OPTION>
+                          <OPTION VALUE="Closing Requested">Closing Requested</OPTION>
+                          <OPTION VALUE="Closing Assigned">Closing Assigned</OPTION>
+                          <OPTION VALUE="Closing Submitted">Closing Submitted</OPTION>
+                          <OPTION VALUE="Closing Scheduled">Closing Scheduled</OPTION>
+                        </cfif>
+                      </select>
+                    </CENTER></TD>
+                </TR>
+                <tr>
+                  <td width="100%" align=center valign=top bgcolor=d3d3d3><table width="100%" cellpadding=1 cellspacing=1 border=0>
+                      <tr>
+                        <td bgcolor=d3d3d3 width="100%" align=center valign=top><FONT FACE=verdana SIZE=1 color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <FONT FACE=verdana SIZE=1 color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <FONT FACE=verdana SIZE=1 color="black">Order Number </td>
+                      <tr>
+                        <td bgcolor=d3d3d3 width="100%" align=center valign=top><INPUT TYPE=TEXT NAME="a_county" VALUE="none" MaxLength=50 Size=16
+									style="font-size: 9; 
+									font-family: verdana; 
+									font-style: normal; 
+									color: 003F1E; 
+									background-color: E4E3E3; 
+									border-color: white; 
+									border-left-width: thin; 
+									border-right-width: thin; 
+									border-top-width: thin; 
+									border-bottom-width: thin; 
+									border-width: thin; 
+									border-style: bar; 
+									clear: none;" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <INPUT TYPE=TEXT NAME="a_zip" VALUE="none" MaxLength=50 Size=16
+									style="font-size: 9; 
+									font-family: verdana; 
+									font-style: normal; 
+									color: 003F1E; 
+									background-color: E4E3E3; 
+									border-color: white; 
+									border-left-width: thin; 
+									border-right-width: thin; 
+									border-top-width: thin; 
+									border-bottom-width: thin; 
+									border-width: thin; 
+									border-style: bar; 
+									clear: none;" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <select name="order"
+		
+											size="1" 
+											style="font-size: 9; 
+											font-family: verdana; 
+											font-style: normal; 
+											color: 003F1E; 
+											background-color: E4E3E3; 
+											border-color: white; 
+											border-left-width: thin; 
+											border-right-width: thin; 
+											border-top-width: thin; 
+											border-bottom-width: thin; 
+											border-width: thin; 
+											border-style: bar; 
+											clear: none; 
+											float: none;" 
+											rows="3" 
+											cols="45" 
+											>
+                            <OPTION VALUE="NONE">N/A</OPTION>
+                            <CFOUTPUT QUERY="read_titleid">
+                              <OPTION VALUE="#Title_ID#">#Title_ID#</OPTION>
+                            </CFOUTPUT>
+                          </SELECT>
+                        </td>
+                      </tr>
+                    </table>
+                    <table width="100%" cellpadding=1 cellspacing=1 border=0>
+                      <TR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b> FROM</b>
+                        <select name="confirm_mon" onchange="monthresult()"
+		size="1" 
+											style="font-size: 9; 
+											font-family: verdana; 
+											font-style: normal; 
+											color: 003F1E; 
+											background-color: E4E3E3; 
+											border-color: white; 
+											border-left-width: thin; 
+											border-right-width: thin; 
+											border-top-width: thin; 
+											border-bottom-width: thin; 
+											border-width: thin; 
+											border-style: bar; 
+											clear: none; 
+											float: none;" 
+											rows="3" 
+											cols="45" 
+											>
+                          <option value="Month">Month</option>
+                          <option value="01">January</option>
+                          <option value="02">February</option>
+                          <option value="03">March</option>
+                          <option value="04">April</option>
+                          <option value="05">May</option>
+                          <option value="06">June</option>
+                          <option value="07">July</option>
+                          <option value="08">August</option>
+                          <option value="09">September</option>
+                          <option value="10">October</option>
+                          <option value="11">November</option>
+                          <option value="12">December</option>
+                        </select>
+                        <select name="comfirm_day" onchange="dayresult()"
+											size="1" 
+											style="font-size: 9; 
+											font-family: verdana; 
+											font-style: normal; 
+											color: 003F1E; 
+											background-color: E4E3E3; 
+											border-color: white; 
+											border-left-width: thin; 
+											border-right-width: thin; 
+											border-top-width: thin; 
+											border-bottom-width: thin; 
+											border-width: thin; 
+											border-style: bar; 
+											clear: none; 
+											float: none;" 
+											rows="3" 
+											cols="45" 
+											>
+                          <OPTION VALUE="Day">Day</OPTION>
+                          <OPTION VALUE="01">01</OPTION>
+                          <OPTION VALUE="02">02</OPTION>
+                          <OPTION VALUE="03">03</OPTION>
+                          <OPTION VALUE="04">04</OPTION>
+                          <OPTION VALUE="05">05</OPTION>
+                          <OPTION VALUE="06">06</OPTION>
+                          <OPTION VALUE="07">07</OPTION>
+                          <OPTION VALUE="08">08</OPTION>
+                          <OPTION VALUE="09">09</OPTION>
+                          <OPTION VALUE="10">10</OPTION>
+                          <OPTION VALUE="11">11</OPTION>
+                          <OPTION VALUE="12">12</OPTION>
+                          <OPTION VALUE="13">13</OPTION>
+                          <OPTION VALUE="14">14</OPTION>
+                          <OPTION VALUE="15">15</OPTION>
+                          <OPTION VALUE="16">16</OPTION>
+                          <OPTION VALUE="17">17</OPTION>
+                          <OPTION VALUE="18">18</OPTION>
+                          <OPTION VALUE="19">19</OPTION>
+                          <OPTION VALUE="20">20</OPTION>
+                          <OPTION VALUE="21">21</OPTION>
+                          <OPTION VALUE="22">22</OPTION>
+                          <OPTION VALUE="23">23</OPTION>
+                          <OPTION VALUE="24">24</OPTION>
+                          <OPTION VALUE="25">25</OPTION>
+                          <OPTION VALUE="26">26</OPTION>
+                          <OPTION VALUE="27">27</OPTION>
+                          <OPTION VALUE="28">28</OPTION>
+                          <OPTION VALUE="29">29</OPTION>
+                          <OPTION VALUE="30">30</OPTION>
+                          <OPTION VALUE="31">31</OPTION>
+                        </select>
+                        <select name="confirm_year" onchange="yearresult()"
+											size="1" 
+											style="font-size: 9; 
+											font-family: verdana; 
+											font-style: normal; 
+											color: 003F1E; 
+											background-color: E4E3E3; 
+											border-color: white; 
+											border-left-width: thin; 
+											border-right-width: thin; 
+											border-top-width: thin; 
+											border-bottom-width: thin; 
+											border-width: thin; 
+											border-style: bar; 
+											clear: none; 
+											float: none;" 
+											rows="3" 
+											cols="45" 
+											>
+                          <option value="Year">Year</option>
+                          <option value="2000">2000</option>
+                          <option value="2001">2001</option>
+                          <option value="2002">2002</option>
+                          <option value="2003">2003</option>
+                          <option value="2004">2004</option>
+                          <option value="2005">2005</option>
+                          <option value="2006">2006</option>
+                          <option value="2007">2007</option>
+                          <option value="2008">2008</option>
+                          <option value="2009">2009</option>
+                          <option value="2010">2010</option>
+                        </select>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>TO</b>
+                        <select name="confirm_mon_to"
+		size="1" 
+											style="font-size: 9; 
+											font-family: verdana; 
+											font-style: normal; 
+											color: 003F1E; 
+											background-color: E4E3E3; 
+											border-color: white; 
+											border-left-width: thin; 
+											border-right-width: thin; 
+											border-top-width: thin; 
+											border-bottom-width: thin; 
+											border-width: thin; 
+											border-style: bar; 
+											clear: none; 
+											float: none;" 
+											rows="3" 
+											cols="45" 
+											>
+                          <option value="Month">Month</option>
+                          <option value="01">January</option>
+                          <option value="02">February</option>
+                          <option value="03">March</option>
+                          <option value="04">April</option>
+                          <option value="05">May</option>
+                          <option value="06">June</option>
+                          <option value="07">July</option>
+                          <option value="08">August</option>
+                          <option value="09">September</option>
+                          <option value="10">October</option>
+                          <option value="11">November</option>
+                          <option value="12">December</option>
+                        </select>
+                        <select name="comfirm_day_to"
+size="1" 
+											style="font-size: 9; 
+											font-family: verdana; 
+											font-style: normal; 
+											color: 003F1E; 
+											background-color: E4E3E3; 
+											border-color: white; 
+											border-left-width: thin; 
+											border-right-width: thin; 
+											border-top-width: thin; 
+											border-bottom-width: thin; 
+											border-width: thin; 
+											border-style: bar; 
+											clear: none; 
+											float: none;" 
+											rows="3" 
+											cols="45" 
+											>
+                          <OPTION VALUE="Day">Day</OPTION>
+                          <OPTION VALUE="01">01</OPTION>
+                          <OPTION VALUE="02">02</OPTION>
+                          <OPTION VALUE="03">03</OPTION>
+                          <OPTION VALUE="04">04</OPTION>
+                          <OPTION VALUE="05">05</OPTION>
+                          <OPTION VALUE="06">06</OPTION>
+                          <OPTION VALUE="07">07</OPTION>
+                          <OPTION VALUE="08">08</OPTION>
+                          <OPTION VALUE="09">09</OPTION>
+                          <OPTION VALUE="10">10</OPTION>
+                          <OPTION VALUE="11">11</OPTION>
+                          <OPTION VALUE="12">12</OPTION>
+                          <OPTION VALUE="13">13</OPTION>
+                          <OPTION VALUE="14">14</OPTION>
+                          <OPTION VALUE="15">15</OPTION>
+                          <OPTION VALUE="16">16</OPTION>
+                          <OPTION VALUE="17">17</OPTION>
+                          <OPTION VALUE="18">18</OPTION>
+                          <OPTION VALUE="19">19</OPTION>
+                          <OPTION VALUE="20">20</OPTION>
+                          <OPTION VALUE="21">21</OPTION>
+                          <OPTION VALUE="22">22</OPTION>
+                          <OPTION VALUE="23">23</OPTION>
+                          <OPTION VALUE="24">24</OPTION>
+                          <OPTION VALUE="25">25</OPTION>
+                          <OPTION VALUE="26">26</OPTION>
+                          <OPTION VALUE="27">27</OPTION>
+                          <OPTION VALUE="28">28</OPTION>
+                          <OPTION VALUE="29">29</OPTION>
+                          <OPTION VALUE="30">30</OPTION>
+                          <OPTION VALUE="31">31</OPTION>
+                        </select>
+                        <select name="confirm_year_to"
+size="1" 
+											style="font-size: 9; 
+											font-family: verdana; 
+											font-style: normal; 
+											color: 003F1E; 
+											background-color: E4E3E3; 
+											border-color: white; 
+											border-left-width: thin; 
+											border-right-width: thin; 
+											border-top-width: thin; 
+											border-bottom-width: thin; 
+											border-width: thin; 
+											border-style: bar; 
+											clear: none; 
+											float: none;" 
+											rows="3" 
+											cols="45" 
+											>
+                          <option value="Year">Year</option>
+                          <option value="2000">2000</option>
+                          <option value="2001">2001</option>
+                          <option value="2002">2002</option>
+                          <option value="2003">2003</option>
+                          <option value="2004">2004</option>
+                          <option value="2005">2005</option>
+                          <option value="2006">2006</option>
+                          <option value="2007">2007</option>
+                          <option value="2008">2008</option>
+                          <option value="2009">2009</option>
+                          <option value="2010">2010</option>
+                        </select>
+                      </tr>
+                      <tr>
+                        <td bgcolor=d3d3d3 width="90%" align=center valign=top><INPUT TYPE=image src="./images/button_search.gif" border=0>
+                        </td>
+                      </tr>
+                      <CFIF #r_count# NEQ "0">
+                        <cfoutput>
+                          <tr>
+                            <td bgcolor=white width=100 align=center valign=top><FONT FACE=verdana SIZE=1 color="blue">
+                              <CFIF #a_County# NEQ "None">
+                                <B>#a_County#</B>
+                              </CFIF>
+                            </td>
+                            <td bgcolor=white width=90 align=center valign=top><FONT FACE=verdana SIZE=1 color="blue">
+                              <CFIF #a_zip# NEQ "None">
+                                <B>#a_zip#</B>
+                              </CFIF>
+                            </td>
+                            <td bgcolor=white width=68 align=center valign=top><FONT FACE=verdana SIZE=1 color="blue">&nbsp; </td>
+                          </tr>
+                          <tr bgcolor=white>
+                            <td bgcolor=white colspan=6 width="98%" align=center valign=top><table width="98%" cellpadding=1 cellspacing=1 border=0 bgcolor=white>
+                                <tr>
+                                  <td width="98%" align=center valign=top bgcolor=white><FONT FACE=verdana SIZE=1 color="blue"> <NOBR>Listings from Search = &nbsp;<B>#r_count#</B></NOBR> </td>
+                                </tr>
+                              </TABLE></td>
+                          </tr>
+                        </CFOUTPUT>
+                      </CFIF>
+                    </table></TD>
+                </TR>
+              </CFFORM>
+            </cfif>
+            <!--- ====================================================================== --->
+            <!--- ====================================================================== --->
+            <!--- ====================================================================== --->
+            <tr>
+              <td width="98%" align=left valign=top bgcolor=e1e1e1><!--- <a href="javascript:window.close();"><img src="./images/button_close.gif" border=0></a> --->
+                <!--- =================================== --->
+                <!--- ===/    [ Search Results ]     \=== --->
+                <!--- =================================== --->
+                <CFIF #r_count# NEQ "0">
+                  <table width="98%" cellpadding=1 cellspacing=1 border=0 bgcolor=BFBFBF>
+                  <tr>
+                    <td width="98%" align=center valign=top bgcolor=d3d3d3><FONT FACE=ARIAL SIZE=2 color="black">
+                      <CENTER>
+                        <B>S e a r c h &nbsp;&nbsp;&nbsp;&nbsp;R e s u l t s </B>
+                      </CENTER></TD>
+                  </TR>
+                  <tr>
+                  <td width="98%" align=center valign=top bgcolor=d3d3d3>
+                  <table width="98%" cellpadding=1 cellspacing=1 border=0>
+                    <tr>
+                      <td bgcolor=gray width=80 align=center valign=top><FONT FACE=verdana SIZE=1 color="black"> First name </td>
+                      <td bgcolor=gray width=80 align=center valign=top><FONT FACE=verdana SIZE=1 color="black"> Last name </td>
+                      <td bgcolor=gray width=10 align=center valign=top><FONT FACE=verdana SIZE=1 color="black"> Order Number </td>
+                      <td bgcolor=gray width=25 align=center valign=top><FONT FACE=verdana SIZE=1 color="black"> Requested Date </td>
+                      <td bgcolor=gray width=25 align=center valign=top><FONT FACE=verdana SIZE=1 color="black"> Scheduled Date </td>
+                      <td bgcolor=gray width=60 align=center valign=top><FONT FACE=verdana SIZE=1 color="black">Closing Request </td>
+                      <td bgcolor=gray width=60 align=center valign=top><FONT FACE=verdana SIZE=1 color="black">Closer Assign </td>
+                      <td bgcolor=gray width=60 align=center valign=top><FONT FACE=verdana SIZE=1 color="black">Closing Submit </td>
+                      <td bgcolor=gray width=50 align=center valign=top><FONT FACE=verdana SIZE=1 color="black">Closed </td>
+                      <td bgcolor=gray width=50 align=center valign=top><FONT FACE=verdana SIZE=1 color="black">Suspend </td>
+                    </tr>
+                    <!--- ======================================================================== --->
+                    <CFSET a_bgcolor = "d3d3d3">
+                    <CFSET a_color_trigger = "1">
+                    <CFIF #a_trigger# EQ "2">
+                      <CFOUTPUT QUERY="read_report">
+                        <tr>
+                          <td bgcolor="#a_bgcolor#" width=80 align=right valign=top><FONT FACE=verdana SIZE=1 color="black"> #bfirstname1# </td>
+                          <td bgcolor="#a_bgcolor#" width=80 align=right valign=top><FONT FACE=verdana SIZE=1 color="black"> #blastname1# </td>
+                          <td bgcolor="#a_bgcolor#" width=10 align=right valign=top><FONT FACE=verdana SIZE=1 color="black"> <a href="./title_report_modify.cfm?uid=#URL.uid#&al=#URL.al#&rec_id=#read_report.title_id#&a_trigger=1&company_id=#comp_id#"><font size=1 color=blue face=verdana>#title_id#</font></a> </td>
+                          <td bgcolor="#a_bgcolor#" width=25 align=right valign=top><FONT FACE=verdana SIZE=1 color="black"> #a_filled_out_date# </td>
+                          <td bgcolor="#a_bgcolor#" width=25 align=right valign=top><FONT FACE=verdana SIZE=1 color="black">
+                            <cfif #appraisal_status# eq "Closing Scheduled">
+                              #c_month#/#c_day#/#c_year#
+                              <cfelse>
+                              //
+                            </cfif>
+                          </td>
+                          <cfif #request_date# NEQ "">
+                            <td bgcolor="#a_bgcolor#" width=50 align=right valign=top><FONT FACE=verdana SIZE=1 color="black"> <a href="./TITLE_CLOSING_ORDER_REQUEST_VIEW_ONLY.cfm?uid=#URL.uid#&al=#URL.al#&rec_id=#read_report.title_id#"><font size=1 color=blue face=verdana>Requested </font></a> </td>
+                            <CFELSE>
+                            <td bgcolor="#a_bgcolor#" width=50 align=right valign=top><FONT FACE=verdana SIZE=1 color="black"> <a href="./form_title_closing_order_requesta.cfm?uid=#getuser.id#&al=#URL.al#&rec_id=#read_report.title_id#"><font size=1 color=red face=verdana>Request</font></a> </td>
+                          </CFIF>
+                          <cfif (#request_date# NEQ "") and (#appraisal_status# eq 'Closer Assigned' or #appraisal_status# eq 'Closing Scheduled' or #appraisal_status# eq 'Loan Closed')>
+                            <td bgcolor="#a_bgcolor#" width=50 align=right valign=top><FONT FACE=verdana SIZE=1 color="black"> <a href="./title_closing_doc_view.cfm?uid=#URL.uid#&al=#URL.al#&rec_id=#read_report.title_id#&company_id=#comp_id#"><font size=1 color=blue face=verdana>Assigned</font></a> </td>
+                            <CFELSE>
+                            <td bgcolor="#a_bgcolor#" width=50 align=right valign=top><FONT FACE=verdana SIZE=1 color="black"> <a href="./title_closing_doc_view.cfm?uid=#getuser.id#&al=#URL.al#&rec_id=#read_report.title_id#&company_id=#comp_id#"><font size=1 color=red face=verdana>Asssign</font></a> </td>
+                          </CFIF>
+                          <cfif (#c_month# NEQ "") and (#appraisal_status# EQ 'Closing Scheduled' or #appraisal_status# EQ 'Loan Closed')>
+                            <td bgcolor="#a_bgcolor#" width=50 align=right valign=top><FONT FACE=verdana SIZE=1 color="black"> <a href="./calendar_closing_info.cfm?uid=#URL.uid#&al=#URL.al#&rec_id=#read_report.title_id#"><font size=1 color=blue face=verdana>Submitted</font></a> </td>
+                            <CFELSE>
+                            <td bgcolor="#a_bgcolor#" width=50 align=right valign=top><FONT FACE=verdana SIZE=1 color="black"> <a href="./title_closing_info.cfm?uid=#URL.uid#&al=#URL.al#&rec_id=#read_report.title_id#"><font size=1 color=red face=verdana>Submit</font></a> </td>
+                          </CFIF>
+                          <td bgcolor="#a_bgcolor#" width=50 align=right valign=top><cfif #appraisal_status# EQ "Loan Closed">
+                              <FONT FACE=verdana SIZE=1 color="black"> Closed
+                              <cfelse>
+                              <FONT FACE=verdana SIZE=1 color="black"><a href="./close_loan.cfm?uid=#URL.uid#&al=#URL.al#&rec_id=#read_report.title_id#&a_trigger=1"><font size=1 color=red face=verdana>Close</font></a>
+                            </cfif>
+                          </td>
+                          <td bgcolor="#a_bgcolor#" width=50 align=right valign=top> suspend </td>
+                        </tr>
+                        <CFIF #a_color_trigger# eq "1">
+                          <CFSET a_bgcolor = "white">
+                          <CFSET a_color_trigger = "2">
+                          <CFELSE>
+                          <CFSET a_bgcolor = "d3d3d3">
+                          <CFSET a_color_trigger = "1">
+                        </CFIF>
+                      </CFOUTPUT>
+                    </CFIF>
+                  </table>
+                </CFIF>
+              </TD>
+            </TR>
+          </table></TD>
+      </TR>
+    </table>
+</BODY>
+</HTML>

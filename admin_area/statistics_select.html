@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--- <html>
+
+
+<body> --->
+<HTML>
+<head>
+	<title>Untitled</title>
+</head>
+<BODY>
+<applet code="simpleapplet.class" width="190" height="168" >
+
+</applet>
+<table width="690" border="0" bordercolor="red">
+				<tr>
+
+
+					<!-- billboard --->
+					<td width="690" align="center" valign="top" style="padding-left:3px">
+		<cfoutput><script src="https://#cgi.server_name#/admin_area/newhome/src/WM_PlugInDetector.js" type=text/javascript></script></cfoutput>
+						<script>
+
+						var flash = false;
+
+					//	flash = WM_easyDetect('flash');
+						//alert("Flash:" + flash);//
+
+					//for testing add to url: /default.asp?flash=0
+						var url = document.location.href;		//alert(url);
+					//	if (url.indexOf("?") != -1){
+					//var qs  = url.split("?");			//alert(qs[1]);
+					//var f	= qs[1].split("=");			//alert(f);
+			//		if (f[0]=="flash" && f[1] == 0)
+				//	flash = false;
+					//	}
+
+						var billboard;
+
+						//	 if (flash){
+
+							billboard =
+							' ' + <!--- URLs used in the movie --->
+							' ' +  <!--- text used in the movie ---> <!--Cardiff provides organizations Total Process Automation  for paper or electronic forms and documents Increase employee productivity by automating form-driven process Improve Responsiveness with automated document assembly Accelerate delivery of data and documents to business systems Reduce manual data entry with advanced document capture technology
+							'<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" ' +
+							' codebase="https://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" ' +
+							' WIDTH=690 HEIGHT=196> ' +
+							' <PARAM NAME=movie VALUE="test1.swf"> <PARAM NAME=quality VALUE=high> <PARAM NAME=bgcolor VALUE=#FFFFFF> <EMBED src="test1.swf" quality=high bgcolor=#FFFFFF  WIDTH=690 HEIGHT=196 TYPE="application/x-shockwave-flash" PLUGINSPAGE="https://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"></EMBED> ' +
+							'</OBJECT>';
+
+				//} else {
+
+				//	billboard = "<img src=https://<cfoutput>#cgi.server_name#</cfoutput>/admin_area/newhome/images/top.jpg>";
+
+				//	}
+							//alert("billboard:" + billboard);
+					document.write(billboard);
+
+						</script>
+</td>
+				</tr>
+</BODY>
+</HTML>
+
+
+
+<!--- <cfobject type="java" name="blobObj" class=".admin_area/java/Test1" action="create">
+<cfset retVal = blobObj.insertBlobData()>
+<CFOUTPUT> #RETVAL# </cfoutput>
+</body>
+</html> --->
